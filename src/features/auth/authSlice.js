@@ -55,7 +55,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { logout } = counterSlice.actions;
+export const { logout } = authSlice.actions;
 
 export const isUserLogged = (state) => state.auth.loggedIn;
 
