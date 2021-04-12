@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { authAPI } from './counterAPI';
+import { authAPI } from '../../app/server';
 
 const initialState = {
   authToken: null,
@@ -59,4 +59,4 @@ export const { logout } = counterSlice.actions;
 
 export const isUserLogged = (state) => state.auth.loggedIn;
 
-export default counterSlice.reducer;
+export default authSlice.reducer;
