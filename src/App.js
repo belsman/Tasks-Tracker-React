@@ -5,18 +5,15 @@ import TasksList from './features/task/TasksList';
 import Login from './features/auth/Login';
 import { isUserLogged } from './features/auth/authSlice';
 
-import './App.css';
-
 function App() {
   const loggedIn = useSelector(isUserLogged);
-  console.log(loggedIn);
   
   if(!loggedIn) {
     return <Login />
   }
 
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Switch>
           <Route path="/">

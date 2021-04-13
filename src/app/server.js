@@ -1,10 +1,13 @@
-import axios from 'axios';
-
 export default {
   baseUrl: 'http://127.0.0.1:9000',
 
-  async get(path) {
-    const response = await fetch(`${this.baseUrl}${path}`);
+  async get(path, options) {
+    const response = await fetch(`${this.baseUrl}${path}`, {
+      headers: {
+        'Authorization': 'Bearer ' + options.token,
+        'Content-Type': 'application/json'
+      }
+    });
     const data = await response.json();
     return data;
   },

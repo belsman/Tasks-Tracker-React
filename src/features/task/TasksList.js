@@ -4,16 +4,16 @@ import TaskExcerpt from './TaskExcerpt';
 import { selectAllTasks, fetchTasks } from './tasksSlice';
 
 const TasksList = () => {
-
     const dispatch = useDispatch();
     const tasks = useSelector(selectAllTasks);
+    const token =  useSelector(state => state.auth.authToken)
 
     const taskStatus = useSelector( state => state.tasks.status );
     const error = useSelector( state => state.error);
 
     useEffect(() => {
       if (taskStatus === 'idle') {
-        dispatch(fetchTasks());
+        dispatch(fetchTasks({ token }));
       }
     }, [dispatch, taskStatus]);
     
@@ -28,10 +28,10 @@ const TasksList = () => {
     }
 
     return (
-      <>
+      <section>
         <h2>Tasks</h2>
         {content}
-      </>
+      </section>
     )
 };
 

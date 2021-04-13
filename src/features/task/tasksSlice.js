@@ -7,9 +7,9 @@ const initialState = {
   error: null,
 };
 
-export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async ()=> {
-  const response = await client.get('/tasks');
-  return response.tasks;
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (options)=> {
+  const data = await client.get('/tasks', options);
+  return data;
 });
 
 const tasksSlice = createSlice({
