@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Counter } from './features/counter/Counter';
+import TasksList from './features/task/TasksList';
 import Login from './features/auth/Login';
 import { isUserLogged } from './features/auth/authSlice';
 
@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/">
-            <Counter />
+            <TasksList />
           </Route>
         </Switch>
       </BrowserRouter>
