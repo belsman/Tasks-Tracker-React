@@ -10,7 +10,12 @@ export default () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    dispatch(registerUserAsync());
+    const bodyFormData = new FormData();
+    bodyFormData.append('username', username);
+    bodyFormData.append('password', password);
+    bodyFormData.append('email', email);
+    dispatch(registerUserAsync(bodyFormData));
+    return;
   };
 
   return (

@@ -1,25 +1,37 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { authAPI } from '../../app/server';
+import client from '../../app/server';
+import axios from 'axios';
 
 const initialState = {
   authToken: null,
-  loggedIn: false,
   status: 'idle',
 };
 
 export const registerUserAsync = createAsyncThunk(
   'auth/registerUser',
-  async () => {
-    const response = await authAPI('registration');
-    return response.data;
+  async (signupData) => {
+    const response = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:9000/signup',
+      data: signupData,
+      headers: { "Content-Type": 'application/json' },
+    });
+    const data = await response.data;
+    return data['auth_token'];
   }
 );
 
 export const loginUserAsync = createAsyncThunk(
     'auth/loginUser',
-    async () => {
-      const response = await authAPI('login');
-      return response.data;
+    async (loginData) => {
+      const response = await axios({
+        method: 'post',
+        url: 'http://127.0.0.1:9000/auth/login',
+        data: loginData,
+        headers: { "Content-Type": 'application/json' },
+      });
+      const data = await response.data;
+      return data['auth_token'];
     }
 );
 
@@ -29,7 +41,6 @@ export const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.authToken = null;
-      state.loggedIn = false;
       state.status = 'idle';
     },
   },
@@ -42,7 +53,6 @@ export const authSlice = createSlice({
       .addCase(registerUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.authToken = action.payload;
-        state.loggedIn = true
       })
       .addCase(loginUserAsync.pending, (state) => {
         state.status = 'loading';
@@ -50,13 +60,12 @@ export const authSlice = createSlice({
       .addCase(loginUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.authToken = action.payload;
-        state.loggedIn = true
       });
   },
 });
 
 export const { logout } = authSlice.actions;
 
-export const isUserLogged = (state) => state.auth.loggedIn;
+export const isUserLogged = (state) => Boolean(state.auth.authToken);
 
 export default authSlice.reducer;
