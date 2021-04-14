@@ -6,6 +6,8 @@ import SingleTaskPage from './features/task/SingleTaskPage';
 import Login from './features/auth/Login';
 import { isUserLogged } from './features/auth/authSlice';
 
+import './styles.css';
+
 function App() {
   const loggedIn = useSelector(isUserLogged);
   

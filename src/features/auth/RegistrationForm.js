@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUserAsync } from './authSlice';
+import style from './auth.module.css';
 
 export default () => {
   const dispatch = useDispatch();
@@ -19,23 +20,26 @@ export default () => {
   };
 
   return (
-    <form name="registration-form" onSubmit={submitHandler}>
-      <label htmlFor="username">Username</label>
-      <input type="text" id="username" name="username" value={username}
-       onChange={e => setUsername(e.target.value)} placeholder="username"
-       required />
+    <form className={style.formELement} name="registration-form" onSubmit={submitHandler}>
+      <label className={style.formLabel} htmlFor="username">Username
+        <input className={style.formGroup} type="text" id="username" name="username" value={username}
+          onChange={e => setUsername(e.target.value)} placeholder="username"
+          required />
+      </label>
 
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" name="email" value={email}
-       onChange={e => setEmail(e.target.value)} placeholder="email"
-       required />
+      <label className={style.formLabel} htmlFor="email">Email
+        <input className={style.formGroup} type="email" id="email" name="email" value={email}
+          onChange={e => setEmail(e.target.value)} placeholder="email"
+          required />
+      </label>
 
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" name="password" value={password}
-       onChange={e => setPassword(e.target.value)} placeholder="password"
-       required/>
+      <label className={style.formLabel} htmlFor="password">Password
+        <input className={style.formGroup} type="password" id="password" name="password" value={password}
+          onChange={e => setPassword(e.target.value)} placeholder="password"
+          required/>
+      </label>
 
-      <button type="submit">Register</button>
+      <button className={style.btn} type="submit">Register</button>
     </form>
   );
 }

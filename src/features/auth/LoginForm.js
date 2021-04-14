@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUserAsync } from './authSlice';
+import style from './auth.module.css';
 
 export default () => {
   const dispatch = useDispatch();
@@ -17,12 +18,18 @@ export default () => {
   };
 
   return (
-    <form name="registration-form" method="POST" onSubmit={submitHandler}>
-      <label htmlFor="username">Username</label>
-      <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="username"/>
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="password"/>
-      <button type="submit">Login</button>
+    <form className={style.formELement} name="registration-form" method="POST" onSubmit={submitHandler}>
+      <label className={style.formLabel} htmlFor="username">Username
+        <input className={style.formGroup} type="text" id="username" value={username}
+          onChange={e => setUsername(e.target.value)}
+          placeholder="username"/>
+      </label>
+      <label className={style.formLabel} htmlFor="password">Password
+      <input className={style.formGroup} type="password" id="password" value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="password"/>
+      </label>
+      <button className={style.btn} type="submit">Login</button>
     </form>
   );
 }
