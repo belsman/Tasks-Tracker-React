@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Running = ({ handleNextForm }) => (
+const Running = ({ handleNextForm, handlePreviousForm }) => (
   <div>
     <p>How many km did you run today?</p>
     <button onClick={() => handleNextForm()}>Next</button>

@@ -13,15 +13,16 @@ export default function AddMeasurementsWizard() {
   const [allFormData, setallFormData] = useState([]);
 
   const nextCurrentForm = () => setCurrentFormIndex(state => state + 1);
+  const previousCurrentForm = () => setCurrentFormIndex(state => state - 1);
 
   const formComponents = [
     <Intro handleNextForm={nextCurrentForm} />,
     <Running handleNextForm={nextCurrentForm} />,
-    <Reading handleNextForm={nextCurrentForm} />,
-    <Coding handleNextForm={nextCurrentForm} />,
-    <Project handleNextForm={nextCurrentForm} />,
-    <Movie handleNextForm={nextCurrentForm} />,
-    <Finished />
+    <Reading handleNextForm={nextCurrentForm} handlePreviousForm={previousCurrentForm}/>,
+    <Coding handleNextForm={nextCurrentForm} handlePreviousForm={previousCurrentForm}/>,
+    <Project handleNextForm={nextCurrentForm} handlePreviousForm={previousCurrentForm}/>,
+    <Movie handleNextForm={nextCurrentForm} handlePreviousForm={previousCurrentForm}/>,
+    <Finished handlePreviousForm={previousCurrentForm} />
   ];
 
   return (
