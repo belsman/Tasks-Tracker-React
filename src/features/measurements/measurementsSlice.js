@@ -12,12 +12,12 @@ export const fetchMeasurements = createAsyncThunk('measurements/fetchMeasurement
   return data;
 });
 
-export const addNewMeasurement = (token, measuredData) => {
-  return createAsyncThunk('measurements/addNewMeasurement', async ()=> {
-    const data = await client.post('/measurements', token, measuredData);
-    return data;
-  });
-}
+export const addNewMeasurement = createAsyncThunk('measurements/addNewMeasurement', async options=> {
+  const { token, formData } = options;
+  const response = await client.post('/measurements', token, formData);
+  const data = await response.json();
+  return data;
+});
 
 const measurementsSlice = createSlice({
   name: 'measurements',
@@ -36,6 +36,7 @@ const measurementsSlice = createSlice({
       state.error = action.error.message
     },
     [addNewMeasurement.fulfilled]: (state, action) => {
+      console.log("THis Has happened!");
       state.measurements.push(action.payload);
     }
   }

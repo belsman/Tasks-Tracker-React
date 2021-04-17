@@ -18,8 +18,7 @@ const Finished = ({ handlePreviousForm, formData }) => {
     if (canSave) {
       try {
         setAddRequestStatus('pending');
-        const addNewMeasurementAction = addNewMeasurement(token, formData)
-        const resultAction = dispatch(addNewMeasurementAction());
+        const resultAction = dispatch(addNewMeasurement({token, formData}));
         unwrapResult(resultAction);
         history.push('/tasks');
       } catch (err) {

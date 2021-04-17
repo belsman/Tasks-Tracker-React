@@ -12,7 +12,8 @@ export default {
     return data;
   },
 
-  async post(path, token, postData = {}) {
+  async post(path, token, formData = {}) {
+    // const { token, formData } = options;
     const response = await fetch(`${this.baseUrl}${path}`, {
       method: 'POST',
       mode: 'cors',  // include, *same-origin, omit
@@ -24,8 +25,9 @@ export default {
       }),
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify(postData)
+      body: JSON.stringify(formData)
     });
-    return response.json();
+
+    return response;
   }
 };
