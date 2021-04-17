@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import SingleTaskPage from './features/task/SingleTaskPage';
-import TasksList from './features/task/TasksList';
+import MeasurementsList from './features/measurements/MeasurementsList';
+import SingleMeasurementPage from './features/measurements/SingleMeasurementPage';
 import Login from './features/auth/Login';
 import { isUserLogged } from './features/auth/authSlice';
 
@@ -24,8 +24,8 @@ function App() {
           <Route exact path="/">
             <AddMeasurementsWizard />
           </Route>
-          <Route exact path="/tasks" component={TasksList} />
-          <Route exact path="/tasks/:taskId" component={SingleTaskPage} />
+          <Route exact path="/records" component={MeasurementsList} />
+          <Route exact path="/records/:recordId" component={SingleMeasurementPage} />
         </Switch>
       </BrowserRouter>
     </div>

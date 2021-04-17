@@ -13,12 +13,11 @@ export default {
   },
 
   async post(path, token, formData = {}) {
-    // const { token, formData } = options;
     const response = await fetch(`${this.baseUrl}${path}`, {
       method: 'POST',
-      mode: 'cors',  // include, *same-origin, omit
+      mode: 'cors',
       cache: 'no-cache',
-      credentials: 'same-origin',  // no-cors, *cors, same-origin
+      credentials: 'same-origin',
       headers: new Headers({
         'Authorization': token,
         'Content-Type': 'application/json',

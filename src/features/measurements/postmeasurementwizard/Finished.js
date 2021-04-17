@@ -20,7 +20,7 @@ const Finished = ({ handlePreviousForm, formData }) => {
         setAddRequestStatus('pending');
         const resultAction = dispatch(addNewMeasurement({token, formData}));
         unwrapResult(resultAction);
-        history.push('/tasks');
+        history.push('/records');
       } catch (err) {
         console.error('Failed to save the measurement: ', err)
       } finally {

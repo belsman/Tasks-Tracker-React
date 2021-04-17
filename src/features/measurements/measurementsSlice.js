@@ -7,12 +7,14 @@ const initialState = {
   error: null,
 };
 
-export const fetchMeasurements = createAsyncThunk('measurements/fetchMeasurement', async (options)=> {
-  const data = await client.get('/measurements', options);
+export const fetchMeasurements = createAsyncThunk('measurements/fetchMeasurement', async options => {
+  const { token } = options;
+  const response = await client.get('/measurements', token);
+  const data = await response.json();
   return data;
 });
 
-export const addNewMeasurement = createAsyncThunk('measurements/addNewMeasurement', async options=> {
+export const addNewMeasurement = createAsyncThunk('measurements/addNewMeasurement', async options => {
   const { token, formData } = options;
   const response = await client.post('/measurements', token, formData);
   const data = await response.json();

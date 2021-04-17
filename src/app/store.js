@@ -7,6 +7,6 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     tasks: tasksSlice,
-    measurementsSlice: measurementsSlice,
+    measurements: measurementsSlice,
   },
 });
