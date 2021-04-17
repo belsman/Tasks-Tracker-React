@@ -4,8 +4,7 @@ const Project = ({ handleNextForm, handlePreviousForm, addDataPoint }) => {
   const [duration, setDuration] = useState(0.0);
 
   const submitValueNextHandler = () => {
-    const dataPoint = { 'project': duration };
-    addDataPoint(dataPoint);
+    addDataPoint('project', duration);
     return handleNextForm();
   };
 

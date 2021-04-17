@@ -4,8 +4,7 @@ const Movie = ({ handleNextForm, handlePreviousForm, addDataPoint }) => {
   const [duration, setDuration] = useState(0.0);
 
   const submitValueNextHandler = () => {
-    const dataPoint = { 'movie': duration };
-    addDataPoint(dataPoint);
+    addDataPoint('movie', duration );
     return handleNextForm();
   };
 

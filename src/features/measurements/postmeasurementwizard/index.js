@@ -10,9 +10,10 @@ import Finished from './Finished';
 
 export default function AddMeasurementsWizard() {
   const [currentFormIndex, setCurrentFormIndex] = useState(0);
-  const [allFormData, setAllFormData] = useState([]);
+  const [allFormData, setAllFormData] = useState({});
 
-  const addDataPoint = (dataPoint) => setAllFormData( state => [ ...state, dataPoint])
+  const addDataPoint = (dataName, dataValue) => setAllFormData(
+     state => ({ ...state, [dataName]: dataValue }) );
 
   const nextCurrentForm = () => setCurrentFormIndex(state => state + 1);
   const previousCurrentForm = () => setCurrentFormIndex(state => state - 1);

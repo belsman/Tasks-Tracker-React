@@ -4,8 +4,7 @@ const Coding = ({ handleNextForm, handlePreviousForm, addDataPoint }) => {
   const [duration, setDuration] = useState(0.0);
 
   const submitValueNextHandler = () => {
-    const dataPoint = { 'coding': duration };
-    addDataPoint(dataPoint);
+    addDataPoint('coding', duration);
     return handleNextForm();
   };
 

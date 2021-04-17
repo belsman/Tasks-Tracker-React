@@ -23,6 +23,9 @@ const TasksList = () => {
       content = <div className="loader">Loading...</div>;
     } else if (taskStatus === 'succeeded') {
       content = tasks.map(task => <TaskExcerpt key={task.id} task={task} />);
+      if (content.length === 0) {
+        content = <div>No Task Found!</div>;
+      }
     } else if (taskStatus === 'failure') {
       content = <div>{error}</div>;
     }

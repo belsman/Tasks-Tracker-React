@@ -5,8 +5,7 @@ const Running = ({ handleNextForm, addDataPoint }) => {
   const [duration, setDuration] = useState(0.0);
 
   const submitValueNextHandler = () => {
-    const dataPoint = { 'running': duration };
-    addDataPoint(dataPoint);
+    addDataPoint('running', duration);
     return handleNextForm();
   };
 

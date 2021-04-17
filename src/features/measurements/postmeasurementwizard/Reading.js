@@ -5,8 +5,7 @@ const Reading = ({ handleNextForm, handlePreviousForm, addDataPoint }) => {
   const [duration, setDuration] = useState(0.0);
 
   const submitValueNextHandler = () => {
-    const dataPoint = { 'reading': duration };
-    addDataPoint(dataPoint);
+    addDataPoint('reading', duration);
     return handleNextForm();
   };
 

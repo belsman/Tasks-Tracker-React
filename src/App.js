@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SingleTaskPage from './features/task/SingleTaskPage';
+import TasksList from './features/task/TasksList';
 import Login from './features/auth/Login';
 import { isUserLogged } from './features/auth/authSlice';
 
@@ -12,9 +13,9 @@ import './styles.css';
 function App() {
   const loggedIn = useSelector(isUserLogged);
   
-  // if(!loggedIn) {
-  //   return <Login />
-  // }
+  if(!loggedIn) {
+    return <Login />
+  }
 
   return (
     <div>
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/">
             <AddMeasurementsWizard />
           </Route>
+          <Route exact path="/tasks" component={TasksList} />
           <Route exact path="/tasks/:taskId" component={SingleTaskPage} />
         </Switch>
       </BrowserRouter>
