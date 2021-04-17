@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { selectAllMeasurements } from './measurementsSlice';
 
 const MeasurementsList = () => {
@@ -12,7 +14,11 @@ const MeasurementsList = () => {
             return (
                 <div key={measured.id}>
                     <h4>{measured.created_at}</h4>
-                    <span>View Details</span>
+                    <span>
+                        <Link to={`/records/${measured.id}`}>
+                            View Post
+                        </Link>
+                    </span>
                 </div>
             );
         });

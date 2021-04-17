@@ -18,7 +18,7 @@ const SingleMeasurementPage = ({ match }) => {
   return (
       <section>
           <article className="record">
-              <h2>{record.createdAt}</h2>
+              <h2>{record.created_at}</h2>
               <ul>
                   <li>Project: {record.project}</li>
                   <li>Coding: {record.coding}</li>

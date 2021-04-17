@@ -38,7 +38,6 @@ const measurementsSlice = createSlice({
       state.error = action.error.message
     },
     [addNewMeasurement.fulfilled]: (state, action) => {
-      console.log("THis Has happened!");
       state.measurements.push(action.payload);
     }
   }
@@ -48,4 +47,4 @@ export default measurementsSlice.reducer;
 
 export const selectAllMeasurements = state => state.measurements.measurements;
 
-export const selectMeasurementsById = (state, measurementId) => state.measurements.measurements.find( measured=> measured.id === measurementId);
+export const selectMeasurementsById = (state, measurementId) => state.measurements.measurements.find( measured => String(measured.id) === measurementId);
