@@ -7,8 +7,10 @@ const initialState = {
   error: null,
 };
 
-export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (options)=> {
-  const data = await client.get('/tasks', options);
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async options => {
+  const { token } = options;
+  const response = await client.get('/tasks', token);
+  const data = await response.json();
   return data;
 });
 
@@ -32,7 +34,3 @@ const tasksSlice = createSlice({
 });
 
 export default tasksSlice.reducer;
-
-export const selectAllTasks = state => state.tasks.tasks;
-
-export const selectTaskById = (state, taskId) => state.tasks.tasks.find(task => String(task.id) === taskId);

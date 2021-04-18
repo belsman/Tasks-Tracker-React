@@ -6,9 +6,8 @@ import { fetchMeasurements, selectAllMeasurements } from './measurementsSlice';
 
 const MeasurementsList = () => {
     const dispatch = useDispatch();
+    
     const measurements = useSelector(selectAllMeasurements);
-    console.log(measurements);
-
     const measurementsStatus = useSelector(state => state.measurements.status );
     const error = useSelector(state => state.measurements.error);
 

@@ -1,11 +1,34 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { selectMeasurementsById } from './measurementsSlice';
+import { fetchTasks } from '../task/tasksSlice';
 
 const SingleMeasurementPage = ({ match }) => {
   const { recordId } = match.params;
+  const dispatch = useDispatch();
   const record = useSelector(state => selectMeasurementsById(state, recordId));
+
+  const tasks = useSelector(state => state.tasks.tasks);
+  const taskStatus = useSelector(state => state.tasks.status);
+  
+  const token = useSelector(state => state.auth.authToken);
+
+  useEffect(() => {
+    if (taskStatus === 'idle') {
+      dispatch(fetchTasks({ token }));
+    }
+  }, [dispatch, taskStatus])
+
+  if (taskStatus === 'succeeded') {
+    const [ coding, movie, project, reading, running ] = tasks.slice().
+      sort((a, b) => {
+        if (a.name < b.name ) return -1;
+        if (a.name > b.name ) return 1;
+        return 0; 
+      });
+    console.log( coding, movie, project, reading, running );
+  }
 
   if (!record) {
       return (
