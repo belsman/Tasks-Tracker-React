@@ -8,8 +8,7 @@ export default {
         'Content-Type': 'application/json',
       }),
     });
-    const data = await response.json();
-    return data;
+    return response;
   },
 
   async post(path, token, formData = {}) {
