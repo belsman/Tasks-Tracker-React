@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Slider from './MeasurementSlider';
 import { selectMeasurementsById } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
 
@@ -41,6 +42,7 @@ const SingleMeasurementPage = ({ match }) => {
   return (
       <section>
           <article className="record">
+              <Slider title={record.created_at} recordId={record.id} />
               <h2>{record.created_at}</h2>
               <ul>
                   <li>Project: {record.project}</li>
