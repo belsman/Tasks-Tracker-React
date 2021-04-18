@@ -21,11 +21,14 @@ const Slider = ({ title, recordId }) => {
         history.push(`/records/${measurements[recordIndex].id}`);
     };
     
+    const hasNext = recordIndex + 1 < measurements.length - 1;
+    const hasPrev = recordIndex - 1 >= 0;
+
     return (
         <div>
-            <button onClick={prevClicked}>Prev</button>
+            <button onClick={prevClicked} disabled={!hasPrev}>Prev</button>
             <span>{title}</span>
-            <button onClick={nextClicked}>Next</button>
+            <button onClick={nextClicked} disabled={!hasNext}>Next</button>
         </div>
     );
 }
