@@ -27,7 +27,7 @@ const Slider = ({ title, recordId }) => {
             <span>{title}</span>
             <button onClick={nextClicked}>Next</button>
         </div>
-    )
+    );
 }
 
 export default Slider;

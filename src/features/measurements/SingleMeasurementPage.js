@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Slider from './MeasurementSlider';
-import { selectMeasurementsById } from './measurementsSlice';
+import {  fetchMeasurements, selectMeasurementsById } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
+import MeasurementCard from './MeasurementCard';
 
 const SingleMeasurementPage = ({ match }) => {
   const { recordId } = match.params;
   const dispatch = useDispatch();
+
   const record = useSelector(state => selectMeasurementsById(state, recordId));
+  
+  const measurementsStatus = useSelector(state => state.measurements.status );
+  const measurementEerror = useSelector(state => state.measurements.error);
 
   const tasks = useSelector(state => state.tasks.tasks);
   const taskStatus = useSelector(state => state.tasks.status);
@@ -19,7 +23,11 @@ const SingleMeasurementPage = ({ match }) => {
     if (taskStatus === 'idle') {
       dispatch(fetchTasks({ token }));
     }
-  }, [dispatch, taskStatus])
+
+    if (measurementsStatus === 'idle') {
+      dispatch(fetchMeasurements({ token }));
+    }
+  }, [dispatch, taskStatus, measurementsStatus]);
 
   if (taskStatus === 'succeeded') {
     const [ coding, movie, project, reading, running ] = tasks.slice().
@@ -31,28 +39,26 @@ const SingleMeasurementPage = ({ match }) => {
     console.log( coding, movie, project, reading, running );
   }
 
-  if (!record) {
-      return (
-          <section>
-              <h2>Record not found!</h2>
-          </section>
-      );
+  let content;
+
+  if (measurementsStatus === 'loading') {
+    content = <div className="loader">Loading...</div>;
+  } else if (measurementsStatus === 'succeeded') {
+      
+      if (!record) {
+        content = <div><h4>No Record Found!</h4></div>;;
+      } else {
+          content = <MeasurementCard record={record} />
+      }
+  } else if (measurementsStatus === 'failure') {
+    content = <div>{measurementEerror}</div>;
   }
 
+
   return (
-      <section>
-          <article className="record">
-              <Slider title={record.created_at} recordId={record.id} />
-              <h2>{record.created_at}</h2>
-              <ul>
-                  <li>Project: {record.project}</li>
-                  <li>Coding: {record.coding}</li>
-                  <li>Reading: {record.reading}</li>
-                  <li>Running: {record.running}</li>
-                  <li>Movie: {record.movie}</li>
-              </ul>
-          </article>
-      </section>
+    <div>
+        {content}
+    </div>
   );
 };
 
