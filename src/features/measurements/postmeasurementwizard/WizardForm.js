@@ -14,7 +14,7 @@ const WizardForm = ({ name, nextForm, prevForm, addDataPoint }) => {
   };
 
   return (
-    <div className={style.wizardWrapper}>
+    <div>
       <FooterNavigation />
       <Title />
       <header className={style.recordLabel}>{name}</header>

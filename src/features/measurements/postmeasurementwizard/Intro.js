@@ -5,7 +5,7 @@ import FooterNavigation from '../../../FooterNavigation';
 import style from './addMeasurement.module.css';
 
 const Intro = ({ handleNextForm }) => (
-  <div className={style.intro}>
+  <div>
     <FooterNavigation />
     <Title />
     <div className={style.introText}>

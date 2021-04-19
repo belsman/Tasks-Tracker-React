@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useHistory } from 'react-router-dom';
 
+import Title from './Title';
+import FooterNavigation from '../../../FooterNavigation';
 import { addNewMeasurement } from '../measurementsSlice';
+import style from './addMeasurement.module.css';
 
 const Finished = ({ handlePreviousForm, formData }) => {
-
-  console.log(formData);
-
   const [addRequestStatus, setAddRequestStatus] = useState('idle');
   const dispatch = useDispatch();
   const history = useHistory();
@@ -17,7 +17,6 @@ const Finished = ({ handlePreviousForm, formData }) => {
   const canSave = Object.values(formData).some(Boolean) && addRequestStatus === 'idle';
  
   const onSaveMeasurementClicked = async () => {
-    return;
     if (canSave) {
       try {
         setAddRequestStatus('pending');
@@ -34,8 +33,12 @@ const Finished = ({ handlePreviousForm, formData }) => {
 
   return (
     <div>
-      <button onClick={() => handlePreviousForm()}>Previous</button>
-      <button onClick={onSaveMeasurementClicked} disabled={!canSave}>Submit</button>
+      <FooterNavigation />
+      <Title />
+      <div className={style.finalWizard}>
+        <button type="button" onClick={() => handlePreviousForm()}>Previous</button>
+        <button type="button" className={style.submit} onClick={onSaveMeasurementClicked} disabled={!canSave}>Submit</button>
+      </div>
     </div>
   );
 }
