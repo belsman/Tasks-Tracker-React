@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 
 import Intro from './Intro';
-import Running from './Running';
-import Reading from './Reading';
-import Coding from './Coding';
-import Project from './Project';
-import Movie from './Movie';
+import WizardForm from './WizardForm';
 import Finished from './Finished';
 
 export default function AddMeasurementsWizard() {
@@ -18,27 +14,12 @@ export default function AddMeasurementsWizard() {
   const nextCurrentForm = () => setCurrentFormIndex(state => state + 1);
   const previousCurrentForm = () => setCurrentFormIndex(state => state - 1);
 
+  const wizards = ['running', 'reading', 'coding', 'project', 'movie']
+    .map( wizardTitle => <WizardForm name={wizardTitle} nextForm={nextCurrentForm} prevForm={previousCurrentForm} addDataPoint={addDataPoint} />,);
+
   const formComponents = [
     <Intro handleNextForm={nextCurrentForm} />,
-    <Running handleNextForm={nextCurrentForm}
-      addDataPoint={addDataPoint} 
-    />,
-    <Reading handleNextForm={nextCurrentForm}
-      handlePreviousForm={previousCurrentForm}
-      addDataPoint={addDataPoint}
-    />,
-    <Coding handleNextForm={nextCurrentForm}
-     handlePreviousForm={previousCurrentForm}
-      addDataPoint={addDataPoint}
-    />,
-    <Project handleNextForm={nextCurrentForm}
-      handlePreviousForm={previousCurrentForm}
-      addDataPoint={addDataPoint}
-    />,
-    <Movie handleNextForm={nextCurrentForm}
-      handlePreviousForm={previousCurrentForm}
-      addDataPoint={addDataPoint}
-    />,
+    ...wizards,
     <Finished handlePreviousForm={previousCurrentForm}
       formData={allFormData}
     />

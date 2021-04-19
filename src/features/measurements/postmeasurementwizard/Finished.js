@@ -7,6 +7,8 @@ import { addNewMeasurement } from '../measurementsSlice';
 
 const Finished = ({ handlePreviousForm, formData }) => {
 
+  console.log(formData);
+
   const [addRequestStatus, setAddRequestStatus] = useState('idle');
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,6 +17,7 @@ const Finished = ({ handlePreviousForm, formData }) => {
   const canSave = Object.values(formData).some(Boolean) && addRequestStatus === 'idle';
  
   const onSaveMeasurementClicked = async () => {
+    return;
     if (canSave) {
       try {
         setAddRequestStatus('pending');
