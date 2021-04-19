@@ -29,3 +29,56 @@
 .introBtn:hover {
   background-color: #e8e8e8;
 }
+
+.recordLabel {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.recordForm {
+  background-color: #fff;
+  width: 240px;
+  height: 240px;
+  padding: 2rem;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.recordForm input {
+  width: 100%;
+  text-align: center;
+}
+
+.wizardSliders {
+  display: flex;
+  top: 80%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: 90%;
+  background-color: #fff;
+  padding: 0.3rem;
+}
+
+.wizardSliders button {
+  width: 100%;
+  border: none;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 3px;
+}
+
+.wizardSliders button.nextBtn {
+  background-color: #5cb85c;
+  color: #fff;
+}
