@@ -16,3 +16,10 @@ body {
 .navActive {
   background-color: #42b5e8;
 }
+
+.header {
+  background-color: #42b5e8;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}

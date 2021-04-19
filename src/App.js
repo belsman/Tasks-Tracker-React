@@ -13,18 +13,18 @@ import './styles.css';
 function App() {
   const loggedIn = useSelector(isUserLogged);
   
-  // if(!loggedIn) {
-  //   return <Login />
-  // }
+  if(!loggedIn) {
+    return <Login />
+  }
 
   return (
     <div>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <AddMeasurementsWizard />
+            <MeasurementsList />
           </Route>
-          <Route exact path="/records" component={MeasurementsList} />
+          <Route exact path="/records" component={AddMeasurementsWizard} />
           <Route exact path="/records/:recordId" component={SingleMeasurementPage} />
         </Switch>
       </BrowserRouter>
