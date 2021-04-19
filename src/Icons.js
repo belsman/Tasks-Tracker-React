@@ -1,5 +1,5 @@
 import React from 'react';
-import { faHourglass, faPlus, faChartLine, faChartPie, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faHourglass, faPlus, faChartLine, faChartPie, faEllipsisH, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const AddMeasurementIcon = () => (
@@ -25,4 +25,10 @@ export const MoreIcon = () => (
     <span>
       <FontAwesomeIcon icon={faEllipsisH} size="lg"/>
     </span>
+);
+
+export const RightIcon = () => (
+  <span>
+    <FontAwesomeIcon icon={faAngleRight} size="md"/>
+  </span>
 );

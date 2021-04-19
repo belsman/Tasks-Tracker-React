@@ -1,0 +1,46 @@
+.recordSummary {
+  margin: 0.7rem 0;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.recordSummary2 span {
+  display: block;
+}
+
+.timestamp {
+  font-size: 0.95rem;
+  color: #212529;
+}
+
+.duration {
+  font-size: 0.7rem;
+  padding: 0.1rem 0;
+  color: #555;
+}
+
+.recordSummary3 {
+  padding: 0 0.2rem;
+}
+
+.timeGain {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.unit {
+  font-size: 0.6rem;
+}
+
+.toDetailLink {
+  padding-left: 0.3rem;
+}
+
+.toDetailLink a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #212529;
+}
