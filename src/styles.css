@@ -11,3 +11,7 @@ body {
   font-size: large;
   font-weight: 700;
 }
+
+.navActive {
+  background-color: #42b5e8;
+}

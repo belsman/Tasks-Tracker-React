@@ -1,10 +1,12 @@
 import React from 'react';
 import Title from './Title';
+import FooterNavigation from '../../../FooterNavigation';
 
 import style from './addMeasurement.module.css';
 
 const Intro = ({ handleNextForm }) => (
   <div className={style.intro}>
+    <FooterNavigation />
     <Title />
     <div className={style.introText}>
       <p>
@@ -12,7 +14,7 @@ const Intro = ({ handleNextForm }) => (
         on your pre-determined daily routines!
       </p>
     </div>
-    <button type="button" className={style.introBtn} onClick={() => handleNextForm()}>Go</button>
+    <button type="button" className={style.introBtn} onClick={() => handleNextForm()}>Go</button> 
   </div>
 );
 

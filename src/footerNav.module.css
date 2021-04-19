@@ -1,0 +1,25 @@
+.nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  background-color: #212529;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navLinks a {
+  display: block;
+  flex-basis: 25%;
+  text-align: center;
+  color: #fff;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.navLinks a:hover {
+  background-color: #42b5e8;
+}
