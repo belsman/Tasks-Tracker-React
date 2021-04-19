@@ -20,6 +20,8 @@ const SingleMeasurementPage = ({ match }) => {
   
   const token = useSelector(state => state.auth.authToken);
 
+  let totalDailyTarget;
+
   useEffect(() => {
     if (taskStatus === 'idle') {
       dispatch(fetchTasks({ token }));
@@ -31,13 +33,8 @@ const SingleMeasurementPage = ({ match }) => {
   }, [dispatch, taskStatus, measurementsStatus]);
 
   if (taskStatus === 'succeeded') {
-    const [ coding, movie, project, reading, running ] = tasks.slice().
-      sort((a, b) => {
-        if (a.name < b.name ) return -1;
-        if (a.name > b.name ) return 1;
-        return 0; 
-      });
-    console.log( coding, movie, project, reading, running );
+    totalDailyTarget  = tasks.map(task => task.daily_target).
+      reduce((total, num) => total + num);
   }
 
   let content;
@@ -49,7 +46,10 @@ const SingleMeasurementPage = ({ match }) => {
       if (!record) {
         content = <div><h4>No Record Found!</h4></div>;;
       } else {
-          content = <MeasurementCard record={record} />
+          content = <MeasurementCard 
+            record={record} 
+            dailyTarget={totalDailyTarget} 
+          />
       }
   } else if (measurementsStatus === 'failure') {
     content = <div>{measurementEerror}</div>;

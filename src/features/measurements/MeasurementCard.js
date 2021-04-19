@@ -7,8 +7,14 @@ import 'react-circular-progressbar/dist/styles.css';
 import style from './singleRecord.module.css';
 import { RunningIcon, MovieIcon, CodingIcon, ReadingIcon, ProjectIcon, RightIcon } from '../../Icons';
 
-const MeasurementCard = ({ record, total, dailyTarget, asPercent }) => {
+const MeasurementCard = ({ record, dailyTarget }) => {
   const { id, project, coding, reading, running, movie, created_at } = record;
+  const total = [project, coding, reading, running, movie]
+    .reduce((sum, num) => sum + num);
+
+  const asPercent= parseInt(((total - dailyTarget) / dailyTarget) * 100);
+  const color = asPercent < 50 ? 'tomato' : '#5cb85c';
+
   return (
     <section>
         <article className="record">
@@ -16,15 +22,21 @@ const MeasurementCard = ({ record, total, dailyTarget, asPercent }) => {
 
             <div className={style.progressPane}>
               <div className={style.progressBarContainer}>
-                <CircularProgressbar value="100" text={total} />
+                <CircularProgressbar value="100" text={total} styles={buildStyles({ pathColor:'#5cb85c' })}/>
                 <div className={style.description}>Total Time spent</div>
               </div>
               <div className={style.progressBarContainer}>
-                <CircularProgressbar value="100" text={dailyTarget} />
+                <CircularProgressbar value="100" text={dailyTarget} styles={buildStyles({ pathColor:'#5cb85c' })}/>
                 <div className={style.description}>Daily Targets</div>
               </div>
               <div className={style.progressBarContainer}>
-                <CircularProgressbar value={asPercent} text={asPercent} />
+                <CircularProgressbar value={asPercent}
+                  text={`${asPercent}%`}
+                  styles={buildStyles({
+                    pathColor: `${color}`,
+                    trailColor: '#d6d6d6',
+                  })} 
+                />
                 <div className={style.description}>Progress</div>
               </div>
             </div>
