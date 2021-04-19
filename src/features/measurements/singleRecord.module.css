@@ -1,0 +1,65 @@
+.slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #444;
+  padding: 0.7rem 0.35rem;
+  background-color: #fff;
+}
+
+.slider button {
+  border: none;
+  background-color: inherit;
+}
+
+.progressPane {
+  display: flex;
+  background-color: #fff;
+  padding: 0.5rem 0;
+}
+
+.progressBarContainer {
+  padding: 0.5rem;
+}
+
+.description {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  padding-top: 0.75rem;
+}
+
+.tasksData {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin: 0;
+  padding: 12px;
+}
+
+.taskItem {
+  background-color: #fff;
+  padding: 1rem 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.taskItem > span {
+  text-align: center;
+}
+
+.value,
+.title {
+  display: block;
+}
+
+.title {
+  font-size: 0.7rem;
+}
+
+.unit {
+  font-size: 0.6rem;
+}

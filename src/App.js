@@ -22,9 +22,9 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <MeasurementsList />
+            <AddMeasurementsWizard />
           </Route>
-          <Route exact path="/records" component={AddMeasurementsWizard} />
+          <Route exact path="/records" component={MeasurementsList} />
           <Route exact path="/records/:recordId" component={SingleMeasurementPage} />
         </Switch>
       </BrowserRouter>

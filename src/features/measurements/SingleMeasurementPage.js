@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  fetchMeasurements, selectMeasurementsById } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
 import MeasurementCard from './MeasurementCard';
+import FooterNavigation from '../../FooterNavigation';
 
 const SingleMeasurementPage = ({ match }) => {
   const { recordId } = match.params;
@@ -57,7 +58,11 @@ const SingleMeasurementPage = ({ match }) => {
 
   return (
     <div>
-        {content}
+      <FooterNavigation />
+      <header className="header">
+        Time Tracker
+      </header>
+      {content}
     </div>
   );
 };
