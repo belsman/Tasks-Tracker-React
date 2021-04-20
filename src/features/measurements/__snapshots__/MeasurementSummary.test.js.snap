@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the expected output 1`] = `
+"<div class=\\"recordSummary\\">
+  <div class=\\"recordSummary2\\" style=\\"display: flex; align-items: center;\\">
+    <div style=\\"width: 50px; padding-right: 3px;\\">
+      <div>A Dummy progressbar</div>
+    </div>
+    <div style=\\"padding-left: 3px;\\"><span class=\\"timestamp\\">March 13th, 1962</span><span class=\\"duration\\">Hours:5</span></div>
+  </div><span class=\\"recordSummary3\\"><span><span class=\\"timeGain\\">6 </span><span class=\\"unit\\">Hours</span></span><span class=\\"toDetailLink\\"><div>A Dummy Link</div></span></span>
+</div>"
+`;
