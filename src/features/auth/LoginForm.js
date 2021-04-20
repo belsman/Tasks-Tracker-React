@@ -14,22 +14,33 @@ export default () => {
     bodyFormData.append('username', username);
     bodyFormData.append('password', password);
     dispatch(loginUserAsync(bodyFormData));
-    return;
   };
 
   return (
     <form className={style.formELement} name="registration-form" method="POST" onSubmit={submitHandler}>
-      <label className={style.formLabel} htmlFor="username">Username
-        <input className={style.formGroup} type="text" id="username" value={username}
+      <label className={style.formLabel} htmlFor="username">
+        Username
+        <input
+          className={style.formGroup}
+          type="text"
+          id="username"
+          value={username}
           onChange={e => setUsername(e.target.value)}
-          placeholder="username"/>
+          placeholder="username"
+        />
       </label>
-      <label className={style.formLabel} htmlFor="password">Password
-      <input className={style.formGroup} type="password" id="password" value={password}
+      <label className={style.formLabel} htmlFor="password">
+        Password
+        <input
+          className={style.formGroup}
+          type="password"
+          id="password"
+          value={password}
           onChange={e => setPassword(e.target.value)}
-          placeholder="password"/>
+          placeholder="password"
+        />
       </label>
       <button className={style.btn} type="submit">Login</button>
     </form>
   );
-}
+};

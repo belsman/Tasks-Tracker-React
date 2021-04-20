@@ -20,17 +20,17 @@ const tasksSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchTasks.pending]: state => {
-      state.status = 'loading'
+      state.status = 'loading';
     },
     [fetchTasks.fulfilled]: (state, action) => {
-      state.status = 'succeeded'
-      state.tasks = state.tasks.concat(action.payload)
+      state.status = 'succeeded';
+      state.tasks = state.tasks.concat(action.payload);
     },
     [fetchTasks.rejected]: (state, action) => {
-      state.status = 'failed'
-      state.error = action.error.message
-    }
-  }
+      state.status = 'failed';
+      state.error = action.error.message;
+    },
+  },
 });
 
 export default tasksSlice.reducer;

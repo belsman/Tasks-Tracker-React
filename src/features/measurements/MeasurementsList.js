@@ -8,59 +8,59 @@ import { fetchMeasurements, selectAllMeasurements } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
 
 const MeasurementsList = () => {
-    const dispatch = useDispatch();
-    
-    const measurements = useSelector(selectAllMeasurements);
-    const measurementsStatus = useSelector(state => state.measurements.status );
-    const error = useSelector(state => state.measurements.error);
+  const dispatch = useDispatch();
 
-    const tasks = useSelector(state => state.tasks.tasks);
-    const taskStatus = useSelector(state => state.tasks.status);
+  const measurements = useSelector(selectAllMeasurements);
+  const measurementsStatus = useSelector(state => state.measurements.status);
+  const error = useSelector(state => state.measurements.error);
 
-    const token = useSelector(state => state.auth.authToken );
+  const tasks = useSelector(state => state.tasks.tasks);
+  const taskStatus = useSelector(state => state.tasks.status);
 
-    useEffect(() => {
-        if (measurementsStatus === 'idle') {
-          dispatch(fetchMeasurements({ token }));
-        }
+  const token = useSelector(state => state.auth.authToken);
 
-        if (taskStatus === 'idle') {
-          dispatch(fetchTasks({ token }));
-        }
-      }, [dispatch, measurementsStatus, taskStatus]);
-    
-    let content;
-    let expectedTotalTime;
-
-    if (taskStatus === 'succeeded') {
-      expectedTotalTime  = tasks.map(task => task.daily_target).
-        reduce((total, num) => total + num);
+  useEffect(() => {
+    if (measurementsStatus === 'idle') {
+      dispatch(fetchMeasurements({ token }));
     }
 
-    if (measurementsStatus === 'loading') {
-      content = <div className="loader">Loading...</div>;
-    } else if (measurementsStatus === 'succeeded') {
-        const dateOrderedMeasurements = measurements.slice().sort((m1, m2) =>
-         (new Date(m2.created_at) - new Date(m1.created_at)));
-        if (measurements.length > 0) {
-            content = dateOrderedMeasurements.map(
-              measured => <MeasurementSummary key={measured.id} record={measured} expectedTotal={expectedTotalTime}/>);
-        } else {
-            content = <div><h4>No Record Found!</h4></div>;
-        }
-    } else if (measurementsStatus === 'failure') {
-      content = <div>{error}</div>;
+    if (taskStatus === 'idle') {
+      dispatch(fetchTasks({ token }));
     }
+  }, [dispatch, measurementsStatus, taskStatus]);
 
-    return (
-      <section>
-        <FooterNavigation />
-        <header className="header">
-          Time Tracker
-        </header>
-        {content}
-      </section>
-    )
+  let content;
+  let expectedTotalTime;
+
+  if (taskStatus === 'succeeded') {
+    expectedTotalTime = tasks.map(task => task.daily_target)
+      .reduce((total, num) => total + num);
+  }
+
+  if (measurementsStatus === 'loading') {
+    content = <div className="loader">Loading...</div>;
+  } else if (measurementsStatus === 'succeeded') {
+    const dateOrderedMeasurements = measurements.slice().sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)));
+    if (measurements.length > 0) {
+      content = dateOrderedMeasurements.map(
+        measured => <MeasurementSummary key={measured.id} record={measured} expectedTotal={expectedTotalTime} />,
+      );
+    } else {
+      content = <div><h4>No Record Found!</h4></div>;
+    }
+  } else if (measurementsStatus === 'failure') {
+    content = <div>{error}</div>;
+  }
+
+  return (
+    <section>
+      <FooterNavigation />
+      <header className="header">
+        Time Tracker
+      </header>
+      {content}
+    </section>
+  );
 };
 
 export default MeasurementsList;

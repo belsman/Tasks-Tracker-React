@@ -15,21 +15,21 @@ const Finished = ({ handlePreviousForm, formData }) => {
   const token = useSelector(state => state.auth.authToken);
 
   const canSave = Object.values(formData).some(Boolean) && addRequestStatus === 'idle';
- 
+
   const onSaveMeasurementClicked = async () => {
     if (canSave) {
       try {
         setAddRequestStatus('pending');
-        const resultAction = dispatch(addNewMeasurement({token, formData}));
+        const resultAction = dispatch(addNewMeasurement({ token, formData }));
         unwrapResult(resultAction);
         history.push('/records');
       } catch (err) {
-        console.error('Failed to save the measurement: ', err)
+        console.error('Failed to save the measurement: ', err);
       } finally {
         setAddRequestStatus('idle');
       }
     }
-  }
+  };
 
   return (
     <div>
@@ -41,6 +41,6 @@ const Finished = ({ handlePreviousForm, formData }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Finished;

@@ -6,14 +6,12 @@ import style from './auth.module.css';
 export default () => {
   const [toggle, setToggle] = useState(true);
 
-  const toggleHandler = (value) => {
-    return (e) => {
-      setToggle(value);
-      document.querySelectorAll(`.${style.tabButtons}`)
-        .forEach( btn => btn.classList.remove(`${style.active}`));
-      e.target.classList.add(`${style.active}`);
-    }
-  }
+  const toggleHandler = value => e => {
+    setToggle(value);
+    document.querySelectorAll(`.${style.tabButtons}`)
+      .forEach(btn => btn.classList.remove(`${style.active}`));
+    e.target.classList.add(`${style.active}`);
+  };
   return (
     <>
       <header className={style.nav}>
@@ -28,5 +26,5 @@ export default () => {
         {toggle ? <LoginForm /> : <RegistrationForm />}
       </section>
     </>
-  )
-}
+  );
+};

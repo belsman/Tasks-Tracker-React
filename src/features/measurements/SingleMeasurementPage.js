@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {  fetchMeasurements, selectMeasurementsById } from './measurementsSlice';
+import { fetchMeasurements, selectMeasurementsById } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
 import MeasurementCard from './MeasurementCard';
 import FooterNavigation from '../../FooterNavigation';
@@ -11,13 +11,13 @@ const SingleMeasurementPage = ({ match }) => {
   const dispatch = useDispatch();
 
   const record = useSelector(state => selectMeasurementsById(state, recordId));
-  
-  const measurementsStatus = useSelector(state => state.measurements.status );
+
+  const measurementsStatus = useSelector(state => state.measurements.status);
   const measurementEerror = useSelector(state => state.measurements.error);
 
   const tasks = useSelector(state => state.tasks.tasks);
   const taskStatus = useSelector(state => state.tasks.status);
-  
+
   const token = useSelector(state => state.auth.authToken);
 
   let totalDailyTarget;
@@ -33,8 +33,8 @@ const SingleMeasurementPage = ({ match }) => {
   }, [dispatch, taskStatus, measurementsStatus]);
 
   if (taskStatus === 'succeeded') {
-    totalDailyTarget  = tasks.map(task => task.daily_target).
-      reduce((total, num) => total + num);
+    totalDailyTarget = tasks.map(task => task.daily_target)
+      .reduce((total, num) => total + num);
   }
 
   let content;
@@ -42,19 +42,19 @@ const SingleMeasurementPage = ({ match }) => {
   if (measurementsStatus === 'loading') {
     content = <div className="loader">Loading...</div>;
   } else if (measurementsStatus === 'succeeded') {
-      
-      if (!record) {
-        content = <div><h4>No Record Found!</h4></div>;;
-      } else {
-          content = <MeasurementCard 
-            record={record} 
-            dailyTarget={totalDailyTarget} 
-          />
-      }
+    if (!record) {
+      content = <div><h4>No Record Found!</h4></div>;
+    } else {
+      content = (
+        <MeasurementCard
+          record={record}
+          dailyTarget={totalDailyTarget}
+        />
+      );
+    }
   } else if (measurementsStatus === 'failure') {
     content = <div>{measurementEerror}</div>;
   }
-
 
   return (
     <div>

@@ -12,9 +12,9 @@ import './styles.css';
 
 function App() {
   const loggedIn = useSelector(isUserLogged);
-  
-  if(!loggedIn) {
-    return <Login />
+
+  if (!loggedIn) {
+    return <Login />;
   }
 
   return (

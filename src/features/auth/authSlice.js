@@ -8,52 +8,52 @@ const initialState = {
 
 export const registerUserAsync = createAsyncThunk(
   'auth/registerUser',
-  async (signupData) => {
+  async signupData => {
     const response = await axios({
       method: 'post',
       url: 'http://127.0.0.1:9000/signup',
       data: signupData,
-      headers: { "Content-Type": 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
     });
     const data = await response.data;
-    return data['auth_token'];
-  }
+    return data.auth_token;
+  },
 );
 
 export const loginUserAsync = createAsyncThunk(
-    'auth/loginUser',
-    async (loginData) => {
-      const response = await axios({
-        method: 'post',
-        url: 'http://127.0.0.1:9000/auth/login',
-        data: loginData,
-        headers: { "Content-Type": 'application/json' },
-      });
-      const data = await response.data;
-      return data['auth_token'];
-    }
+  'auth/loginUser',
+  async loginData => {
+    const response = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:9000/auth/login',
+      data: loginData,
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const data = await response.data;
+    return data.auth_token;
+  },
 );
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: (state) => {
+    logout: state => {
       state.authToken = null;
       state.status = 'idle';
     },
   },
 
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(registerUserAsync.pending, (state) => {
+      .addCase(registerUserAsync.pending, state => {
         state.status = 'loading';
       })
       .addCase(registerUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.authToken = action.payload;
       })
-      .addCase(loginUserAsync.pending, (state) => {
+      .addCase(loginUserAsync.pending, state => {
         state.status = 'loading';
       })
       .addCase(loginUserAsync.fulfilled, (state, action) => {
@@ -65,6 +65,6 @@ export const authSlice = createSlice({
 
 export const { logout } = authSlice.actions;
 
-export const isUserLogged = (state) => Boolean(state.auth.authToken);
+export const isUserLogged = state => Boolean(state.auth.authToken);
 
 export default authSlice.reducer;

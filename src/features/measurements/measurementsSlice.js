@@ -27,24 +27,24 @@ const measurementsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchMeasurements.pending]: state => {
-      state.status = 'loading'
+      state.status = 'loading';
     },
     [fetchMeasurements.fulfilled]: (state, action) => {
-      state.status = 'succeeded'
-      state.measurements = state.measurements.concat(action.payload)
+      state.status = 'succeeded';
+      state.measurements = state.measurements.concat(action.payload);
     },
     [fetchMeasurements.rejected]: (state, action) => {
-      state.status = 'failed'
-      state.error = action.error.message
+      state.status = 'failed';
+      state.error = action.error.message;
     },
     [addNewMeasurement.fulfilled]: (state, action) => {
       state.measurements.push(action.payload);
-    }
-  }
+    },
+  },
 });
 
 export default measurementsSlice.reducer;
 
 export const selectAllMeasurements = state => state.measurements.measurements;
 
-export const selectMeasurementsById = (state, measurementId) => state.measurements.measurements.find( measured => String(measured.id) === measurementId);
+export const selectMeasurementsById = (state, measurementId) => state.measurements.measurements.find(measured => String(measured.id) === measurementId);

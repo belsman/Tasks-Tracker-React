@@ -9,23 +9,25 @@ export default function AddMeasurementsWizard() {
   const [allFormData, setAllFormData] = useState({});
 
   const addDataPoint = (dataName, dataValue) => setAllFormData(
-     state => ({ ...state, [dataName]: dataValue }) );
+    state => ({ ...state, [dataName]: dataValue }),
+  );
 
   const nextCurrentForm = () => setCurrentFormIndex(state => state + 1);
   const previousCurrentForm = () => setCurrentFormIndex(state => state - 1);
 
   const wizards = ['running', 'reading', 'coding', 'project', 'movie']
-    .map( wizardTitle => <WizardForm name={wizardTitle} nextForm={nextCurrentForm} prevForm={previousCurrentForm} addDataPoint={addDataPoint} />,);
+    .map(wizardTitle => <WizardForm name={wizardTitle} nextForm={nextCurrentForm} prevForm={previousCurrentForm} addDataPoint={addDataPoint} />);
 
   const formComponents = [
     <Intro handleNextForm={nextCurrentForm} />,
     ...wizards,
-    <Finished handlePreviousForm={previousCurrentForm}
+    <Finished
+      handlePreviousForm={previousCurrentForm}
       formData={allFormData}
-    />
+    />,
   ];
 
   return (
     formComponents[currentFormIndex]
   );
-};
+}
