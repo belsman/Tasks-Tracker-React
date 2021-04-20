@@ -1,28 +1,29 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import PropTypes from 'prop-types';
 import Slider from './MeasurementSlider';
 
 import 'react-circular-progressbar/dist/styles.css';
 
 import style from './singleRecord.module.css';
 import {
-  RunningIcon, MovieIcon, CodingIcon, ReadingIcon, ProjectIcon, RightIcon,
-} from '../../Icons';
+  RunningIcon, MovieIcon, CodingIcon, ReadingIcon, ProjectIcon,
+} from '../../components/Icons';
 
 const MeasurementCard = ({ record, dailyTarget }) => {
   const {
-    id, project, coding, reading, running, movie, created_at,
+    id, project, coding, reading, running, movie, created_at: createdAt,
   } = record;
   const total = [project, coding, reading, running, movie]
     .reduce((sum, num) => sum + num);
 
-  const asPercent = parseInt(((total - dailyTarget) / dailyTarget) * 100);
+  const asPercent = parseInt(((total - dailyTarget) / dailyTarget) * 100, 10);
   const color = asPercent < 50 ? 'tomato' : '#5cb85c';
 
   return (
     <section>
       <article className="record">
-        <Slider title={created_at} recordId={id} />
+        <Slider title={createdAt} recordId={id} />
 
         <div className={style.progressPane}>
           <div className={style.progressBarContainer}>
@@ -101,6 +102,19 @@ const MeasurementCard = ({ record, dailyTarget }) => {
       </article>
     </section>
   );
+};
+
+MeasurementCard.propTypes = {
+  record: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    project: PropTypes.number.isRequired,
+    coding: PropTypes.number.isRequired,
+    reading: PropTypes.number.isRequired,
+    running: PropTypes.number.isRequired,
+    movie: PropTypes.number.isRequired,
+    created_at: PropTypes.string.isRequired,
+  }).isRequired,
+  dailyTarget: PropTypes.number.isRequired,
 };
 
 export default MeasurementCard;

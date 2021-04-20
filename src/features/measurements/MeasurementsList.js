@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MeasurementSummary from './MeasurementSummary';
-import FooterNavigation from '../../FooterNavigation';
+import FooterNavigation from '../../components/FooterNavigation';
 
 import { fetchMeasurements, selectAllMeasurements } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
@@ -40,10 +40,17 @@ const MeasurementsList = () => {
   if (measurementsStatus === 'loading') {
     content = <div className="loader">Loading...</div>;
   } else if (measurementsStatus === 'succeeded') {
-    const dateOrderedMeasurements = measurements.slice().sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)));
+    const dateOrderedMeasurements = measurements.slice()
+      .sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)));
     if (measurements.length > 0) {
       content = dateOrderedMeasurements.map(
-        measured => <MeasurementSummary key={measured.id} record={measured} expectedTotal={expectedTotalTime} />,
+        measured => (
+          <MeasurementSummary
+            key={measured.id}
+            record={measured}
+            expectedTotal={expectedTotalTime}
+          />
+        ),
       );
     } else {
       content = <div><h4>No Record Found!</h4></div>;

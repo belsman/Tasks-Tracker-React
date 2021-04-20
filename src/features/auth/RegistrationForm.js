@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { registerUserAsync } from './authSlice';
 import style from './auth.module.css';
 
-export default () => {
+const RegistrationForm = () => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -66,3 +66,5 @@ export default () => {
     </form>
   );
 };
+
+export default RegistrationForm;

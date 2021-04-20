@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Title from './Title';
-import FooterNavigation from '../../../FooterNavigation';
+import FooterNavigation from '../../../components/FooterNavigation';
 import { addNewMeasurement } from '../measurementsSlice';
 import style from './addMeasurement.module.css';
 
@@ -41,6 +42,21 @@ const Finished = ({ handlePreviousForm, formData }) => {
       </div>
     </div>
   );
+};
+
+Finished.propTypes = {
+  handlePreviousForm: PropTypes.func.isRequired,
+  formData: PropTypes.shape({
+    running: PropTypes.number,
+    reading: PropTypes.number,
+    project: PropTypes.number,
+    coding: PropTypes.number,
+    movie: PropTypes.number,
+  }),
+};
+
+Finished.defaultProps = {
+  formData: {},
 };
 
 export default Finished;

@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 
 import { selectAllMeasurements } from './measurementsSlice';
-import { RightIcon, LeftIcon } from '../../Icons';
+import { RightIcon, LeftIcon } from '../../components/Icons';
 import style from './singleRecord.module.css';
 
 const Slider = ({ title, recordId }) => {
@@ -28,15 +29,20 @@ const Slider = ({ title, recordId }) => {
 
   return (
     <div className={style.slider}>
-      <button onClick={prevClicked} disabled={!hasPrev}>
+      <button type="button" onClick={prevClicked} disabled={!hasPrev}>
         <LeftIcon />
       </button>
       <span>{format(new Date(title), 'MMMM dd, yyyy')}</span>
-      <button onClick={nextClicked} disabled={!hasNext}>
+      <button type="button" onClick={nextClicked} disabled={!hasNext}>
         <RightIcon />
       </button>
     </div>
   );
+};
+
+Slider.propTypes = {
+  title: PropTypes.string.isRequired,
+  recordId: PropTypes.number.isRequired,
 };
 
 export default Slider;

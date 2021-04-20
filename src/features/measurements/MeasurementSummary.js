@@ -1,11 +1,11 @@
 import React from 'react';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-import { RightIcon } from '../../Icons';
+import { RightIcon } from '../../components/Icons';
 import style from './measurementsStyle.module.css';
 
 const MeasurementSummary = ({ record, expectedTotal }) => {
@@ -15,7 +15,7 @@ const MeasurementSummary = ({ record, expectedTotal }) => {
   const recordTotal = [movie, project, running, reading, coding]
     .reduce((total, num) => total + num);
 
-  const percentage = parseInt(((expectedTotal - recordTotal) / expectedTotal) * 100);
+  const percentage = parseInt(((expectedTotal - recordTotal) / expectedTotal) * 100, 10);
 
   const color = percentage < 50 ? 'tomato' : '#5cb85c';
 
@@ -57,6 +57,19 @@ const MeasurementSummary = ({ record, expectedTotal }) => {
       </span>
     </div>
   );
+};
+
+MeasurementSummary.propTypes = {
+  record: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    project: PropTypes.number.isRequired,
+    coding: PropTypes.number.isRequired,
+    reading: PropTypes.number.isRequired,
+    running: PropTypes.number.isRequired,
+    movie: PropTypes.number.isRequired,
+    created_at: PropTypes.string.isRequired,
+  }).isRequired,
+  expectedTotal: PropTypes.number.isRequired,
 };
 
 export default MeasurementSummary;

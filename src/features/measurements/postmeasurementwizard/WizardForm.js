@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import FooterNavigation from '../../../FooterNavigation';
+import PropTypes from 'prop-types';
+import FooterNavigation from '../../../components/FooterNavigation';
 import Title from './Title';
 import style from './addMeasurement.module.css';
 
@@ -28,6 +29,13 @@ const WizardForm = ({
       </div>
     </div>
   );
+};
+
+WizardForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  addDataPoint: PropTypes.func.isRequired,
+  nextForm: PropTypes.func.isRequired,
+  prevForm: PropTypes.func.isRequired,
 };
 
 export default WizardForm;

@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import RegistrationForm from './RegistrationForm';
 import style from './auth.module.css';
 
-export default () => {
+const Login = () => {
   const [toggle, setToggle] = useState(true);
 
   const toggleHandler = value => e => {
@@ -19,8 +19,8 @@ export default () => {
       </header>
       <section className={style.section}>
         <div className={style.tab}>
-          <button className={style.tabButtons} onClick={toggleHandler(true)}>Login</button>
-          <button className={style.tabButtons} onClick={toggleHandler(false)}>Register</button>
+          <button type="button" className={style.tabButtons} onClick={toggleHandler(true)}>Login</button>
+          <button type="button" className={style.tabButtons} onClick={toggleHandler(false)}>Register</button>
         </div>
 
         {toggle ? <LoginForm /> : <RegistrationForm />}
@@ -28,3 +28,5 @@ export default () => {
     </>
   );
 };
+
+export default Login;

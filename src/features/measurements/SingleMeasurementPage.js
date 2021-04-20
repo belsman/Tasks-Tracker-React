@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchMeasurements, selectMeasurementsById } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
 import MeasurementCard from './MeasurementCard';
-import FooterNavigation from '../../FooterNavigation';
+import FooterNavigation from '../../components/FooterNavigation';
 
 const SingleMeasurementPage = ({ match }) => {
   const { recordId } = match.params;
@@ -65,6 +66,14 @@ const SingleMeasurementPage = ({ match }) => {
       {content}
     </div>
   );
+};
+
+SingleMeasurementPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      recordId: PropTypes.number.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default SingleMeasurementPage;

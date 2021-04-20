@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { loginUserAsync } from './authSlice';
 import style from './auth.module.css';
 
-export default () => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -44,3 +44,5 @@ export default () => {
     </form>
   );
 };
+
+export default LoginForm;
