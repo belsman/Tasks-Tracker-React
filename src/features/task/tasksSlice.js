@@ -19,6 +19,7 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    /* eslint-disable no-param-reassign */
     [fetchTasks.pending]: state => {
       state.status = 'loading';
     },
@@ -30,6 +31,7 @@ const tasksSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     },
+    /* eslint-enable no-param-reassign */
   },
 });
 

@@ -26,6 +26,7 @@ const measurementsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    /* eslint-disable no-param-reassign */
     [fetchMeasurements.pending]: state => {
       state.status = 'loading';
     },
@@ -40,6 +41,7 @@ const measurementsSlice = createSlice({
     [addNewMeasurement.fulfilled]: (state, action) => {
       state.measurements.push(action.payload);
     },
+    /* eslint-enable no-param-reassign */
   },
 });
 
@@ -47,4 +49,5 @@ export default measurementsSlice.reducer;
 
 export const selectAllMeasurements = state => state.measurements.measurements;
 
-export const selectMeasurementsById = (state, measurementId) => state.measurements.measurements.find(measured => String(measured.id) === measurementId);
+export const selectMeasurementsById = (state, measurementId) => (state.measurements.measurements
+  .find(measured => String(measured.id) === measurementId));

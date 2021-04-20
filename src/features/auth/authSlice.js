@@ -37,6 +37,7 @@ export const loginUserAsync = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  /* eslint-disable no-param-reassign */
   reducers: {
     logout: state => {
       state.authToken = null;
@@ -60,7 +61,7 @@ export const authSlice = createSlice({
         state.status = 'idle';
         state.authToken = action.payload;
       });
-  },
+  }, /* eslint-enable no-param-reassign */
 });
 
 export const { logout } = authSlice.actions;
