@@ -3,7 +3,7 @@ import authReducer from '../features/auth/authSlice';
 import tasksSlice from '../features/task/tasksSlice';
 import measurementsSlice from '../features/measurements/measurementsSlice';
 
-export const store = configureStore({
+export default configureStore({
   reducer: {
     auth: authReducer,
     tasks: tasksSlice,
