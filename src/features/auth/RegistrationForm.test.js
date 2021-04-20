@@ -12,17 +12,16 @@ import { registerUserAsync } from './authSlice';
 import RegistrationForm from './RegistrationForm';
 
 jest.mock('./authSlice', () => ({
-    registerUserAsync(fn) {
-      return fn;
-    }
+  registerUserAsync(fn) {
+    return fn;
+  },
 }));
 
 jest.mock('react-redux', () => ({
-    useDispatch(fn) {
-      return fn;
-    }
+  useDispatch(fn) {
+    return fn;
+  },
 }));
-
 
 let container = null;
 beforeEach(() => {
@@ -40,27 +39,26 @@ afterEach(() => {
 });
 
 it('renders a Registration input username field', () => {
-    const username = document.querySelector('input#username');
-    expect(username).not.toBeNull();
+  const username = document.querySelector('input#username');
+  expect(username).not.toBeNull();
 });
 
 it('renders a Registration password field', () => {
-    const password = document.querySelector('input#password');
-    expect(password).not.toBeNull();
+  const password = document.querySelector('input#password');
+  expect(password).not.toBeNull();
 });
 
-
 it('renders a Registration email field', () => {
-    const password = document.querySelector('input#email');
-    expect(password).not.toBeNull();
+  const password = document.querySelector('input#email');
+  expect(password).not.toBeNull();
 });
 
 it('should render the expected output', () => {
-    act(() => {
-      render(<RegistrationForm />, container);
-    });
-  
-    expect(
-      pretty(container.innerHTML),
-    ).toMatchSnapshot();
+  act(() => {
+    render(<RegistrationForm />, container);
+  });
+
+  expect(
+    pretty(container.innerHTML),
+  ).toMatchSnapshot();
 });

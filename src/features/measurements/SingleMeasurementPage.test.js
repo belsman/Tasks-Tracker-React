@@ -30,75 +30,73 @@ jest.mock('./MeasurementCard', () => function override() {
 });
 
 jest.mock('../task/tasksSlice', () => ({
-    fetchTasks() {
-        return [
-          {
-            name: 'running',
-            description: 'Some text',
-            daily_target: 2
-          },
-          {
-            name: 'reading',
-            description: 'Some text',
-            daily_target: 1
-          },
-          {
-            name: 'project',
-            description: 'Some text',
-            daily_target: 2
-          },
-          {
-            name: 'movie',
-            description: 'Some text',
-            daily_target: 1
-          },
-          {
-            name: 'coding',
-            description: 'Some text',
-            daily_target: 3
-          }
-        ]
-    }
+  fetchTasks() {
+    return [
+      {
+        name: 'running',
+        description: 'Some text',
+        daily_target: 2,
+      },
+      {
+        name: 'reading',
+        description: 'Some text',
+        daily_target: 1,
+      },
+      {
+        name: 'project',
+        description: 'Some text',
+        daily_target: 2,
+      },
+      {
+        name: 'movie',
+        description: 'Some text',
+        daily_target: 1,
+      },
+      {
+        name: 'coding',
+        description: 'Some text',
+        daily_target: 3,
+      },
+    ];
+  },
 }));
 
 jest.mock('./measurementsSlice', () => ({
-    selectMeasurementsById() {
-        return {
-          id: 1,
-          running: 1,
-          reading: 1,
-          project: 1,
-          coding: 1,
-          movie: 1,
-          created_at: '2013-03-10T02:00:00Z'
-        };
-    },
+  selectMeasurementsById() {
+    return {
+      id: 1,
+      running: 1,
+      reading: 1,
+      project: 1,
+      coding: 1,
+      movie: 1,
+      created_at: '2013-03-10T02:00:00Z',
+    };
+  },
 
-    fetchMeasurements() {
-        return [
-          {
-            id: 1,
-            running: 1,
-            reading: 1,
-            project: 1,
-            coding: 1,
-            movie: 1,
-            created_at: '2013-03-10T02:00:00Z'
-          },
-          {
-            id: 2,
-            running: 0,
-            reading: 1,
-            project: 0,
-            coding: 1,
-            movie: 0,
-            created_at: '2013-03-11T02:00:00Z'
-          }
-        ]
-    }
+  fetchMeasurements() {
+    return [
+      {
+        id: 1,
+        running: 1,
+        reading: 1,
+        project: 1,
+        coding: 1,
+        movie: 1,
+        created_at: '2013-03-10T02:00:00Z',
+      },
+      {
+        id: 2,
+        running: 0,
+        reading: 1,
+        project: 0,
+        coding: 1,
+        movie: 0,
+        created_at: '2013-03-11T02:00:00Z',
+      },
+    ];
+  },
 }));
-
-
 
 let container = null;
 beforeEach(() => {

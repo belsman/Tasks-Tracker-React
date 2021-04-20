@@ -12,17 +12,16 @@ import { loginUserAsync } from './authSlice';
 import LoginForm from './LoginForm';
 
 jest.mock('./authSlice', () => ({
-    loginUserAsync(fn) {
-      return fn;
-    }
+  loginUserAsync(fn) {
+    return fn;
+  },
 }));
 
 jest.mock('react-redux', () => ({
-    useDispatch(fn) {
-      return fn;
-    }
+  useDispatch(fn) {
+    return fn;
+  },
 }));
-
 
 let container = null;
 beforeEach(() => {
@@ -40,21 +39,21 @@ afterEach(() => {
 });
 
 it('renders a Login input username field', () => {
-    const username = document.querySelector('input#username');
-    expect(username).not.toBeNull();
+  const username = document.querySelector('input#username');
+  expect(username).not.toBeNull();
 });
 
 it('renders a Login password field', () => {
-    const password = document.querySelector('input#password');
-    expect(password).not.toBeNull();
+  const password = document.querySelector('input#password');
+  expect(password).not.toBeNull();
 });
 
 it('should render the expected output', () => {
-    act(() => {
-      render(<LoginForm />, container);
-    });
-  
-    expect(
-      pretty(container.innerHTML),
-    ).toMatchSnapshot();
+  act(() => {
+    render(<LoginForm />, container);
+  });
+
+  expect(
+    pretty(container.innerHTML),
+  ).toMatchSnapshot();
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   faHourglass, faPlus, faChartLine, faChartPie, faEllipsisH,
   faAngleRight, faAngleLeft, faTerminal, faRunning,
-  faBookOpen, faTools, faFilm,
+  faBookOpen, faTools, faFilm, faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -28,6 +28,12 @@ export const ProgressIcon = () => (
 export const MoreIcon = () => (
   <span>
     <FontAwesomeIcon icon={faEllipsisH} size="lg" />
+  </span>
+);
+
+export const LogOutIcon = () => (
+  <span>
+    <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
   </span>
 );
 

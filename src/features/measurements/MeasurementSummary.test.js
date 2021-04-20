@@ -15,46 +15,46 @@ import MeasurementSummary from './MeasurementSummary';
 
 /* eslint-enable no-unused-vars */
 jest.mock('react-router-dom', () => ({
-    Link() {
-      return (
-        <div>A Dummy Link</div>
-      );
-    },
+  Link() {
+    return (
+      <div>A Dummy Link</div>
+    );
+  },
 }));
 
 jest.mock('date-fns', () => ({
-    format() {
-      return (
-        'March 13th, 1962'
-      )
-    },
+  format() {
+    return (
+      'March 13th, 1962'
+    );
+  },
 }));
 
 jest.mock('react-circular-progressbar', () => ({
-    CircularProgressbar() {
-      return (
-        <div>A Dummy progressbar</div>
-      );
-    },
-    buildStyles() {},
+  CircularProgressbar() {
+    return (
+      <div>A Dummy progressbar</div>
+    );
+  },
+  buildStyles() {},
 }));
 
 jest.mock('../../components/Icons', () => ({
-    RightIcon() {
-      return (
-        <div>An Icon</div>
-      );
-    },
+  RightIcon() {
+    return (
+      <div>An Icon</div>
+    );
+  },
 }));
 
 const record = {
-    id: 1,
-    running: 1,
-    reading: 1,
-    project: 1,
-    coding: 1,
-    movie: 1,
-    created_at: '2013-03-10T02:00:00Z'
+  id: 1,
+  running: 1,
+  reading: 1,
+  project: 1,
+  coding: 1,
+  movie: 1,
+  created_at: '2013-03-10T02:00:00Z',
 };
 
 let container = null;
@@ -72,33 +72,32 @@ afterEach(() => {
   container = null;
 });
 
-
 it('renders with with the correct timestamp for a given the record', () => {
   const timestamp = document.querySelector('span.timestamp');
   expect(timestamp.textContent).toBe('March 13th, 1962');
 });
 
 it('renders with with the correct unit as Hours', () => {
-    const unit = document.querySelector('span.unit');
-    expect(unit.textContent).toBe('Hours');
+  const unit = document.querySelector('span.unit');
+  expect(unit.textContent).toBe('Hours');
 });
 
-it('renders with with the correct duration as sum of total time spent', () => {  
-    const duration = document.querySelector('span.duration');
-    expect(duration.textContent).toBe('Hours:5');
+it('renders with with the correct duration as sum of total time spent', () => {
+  const duration = document.querySelector('span.duration');
+  expect(duration.textContent).toBe('Hours:5');
 });
 
-it('renders with with the correct time gain as a difference of 11 and 5', () => {  
-    const timeGain = document.querySelector('span.timeGain');
-    expect(timeGain.textContent).toBe('6 ');
+it('renders with with the correct time gain as a difference of 11 and 5', () => {
+  const timeGain = document.querySelector('span.timeGain');
+  expect(timeGain.textContent).toBe('6 ');
 });
 
 it('should render the expected output', () => {
-    act(() => {
-      render(<MeasurementSummary record={record} expectedTotal={11} />, container);
-    });
-  
-    expect(
-      pretty(container.innerHTML),
-    ).toMatchSnapshot();
+  act(() => {
+    render(<MeasurementSummary record={record} expectedTotal={11} />, container);
+  });
+
+  expect(
+    pretty(container.innerHTML),
+  ).toMatchSnapshot();
 });

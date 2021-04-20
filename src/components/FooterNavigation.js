@@ -1,13 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {
-  AddMeasurementIcon, ListMeasurementIcon, ProgressIcon, MoreIcon,
+  AddMeasurementIcon, ListMeasurementIcon, ProgressIcon, LogOutIcon,
 } from './Icons';
 
+import { logout } from '../features/auth/authSlice';
 import style from './footerNav.module.css';
 
 const FooterNavigation = () => {
   const checkActiveLink = path => (match, location) => location.pathname === path;
+  const dispatch = useDispatch();
 
   return (
     <nav className={style.nav}>
@@ -32,8 +35,8 @@ const FooterNavigation = () => {
           <ProgressIcon />
         </NavLink>
 
-        <NavLink to="#">
-          <MoreIcon />
+        <NavLink to="#" onClick={() => dispatch(logout())}>
+          <LogOutIcon />
         </NavLink>
       </div>
     </nav>

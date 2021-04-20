@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import ClipLoader from 'react-spinners/ClipLoader';
+
 import MeasurementSummary from './MeasurementSummary';
 import FooterNavigation from '../../components/FooterNavigation';
 
 import { fetchMeasurements, selectAllMeasurements } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
+
+import override from './styledComponent';
 
 const MeasurementsList = () => {
   const dispatch = useDispatch();
@@ -38,7 +42,11 @@ const MeasurementsList = () => {
   }
 
   if (measurementsStatus === 'loading') {
-    content = <div className="loader">Loading...</div>;
+    content = (
+      <div className="loader">
+        <ClipLoader color="#0000ff" css={override} size={150} />
+      </div>
+    );
   } else if (measurementsStatus === 'succeeded') {
     const dateOrderedMeasurements = measurements.slice()
       .sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)));
