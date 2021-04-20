@@ -11,7 +11,7 @@ export const registerUserAsync = createAsyncThunk(
   async signupData => {
     const response = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:9000/signup',
+      url: 'https://git.heroku.com/nameless-citadel-07223.git/signup',
       data: signupData,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -25,7 +25,7 @@ export const loginUserAsync = createAsyncThunk(
   async loginData => {
     const response = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:9000/auth/login',
+      url: 'https://git.heroku.com/nameless-citadel-07223.git/auth/login',
       data: loginData,
       headers: { 'Content-Type': 'application/json' },
     });

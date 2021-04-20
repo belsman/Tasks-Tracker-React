@@ -25,6 +25,7 @@ const Finished = ({ handlePreviousForm, formData }) => {
         unwrapResult(resultAction);
         history.push('/records');
       } catch (err) {
+        // eslint-disable-next-line
         console.error('Failed to save the measurement: ', err);
       } finally {
         setAddRequestStatus('idle');

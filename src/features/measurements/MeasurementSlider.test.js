@@ -77,7 +77,7 @@ beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
   act(() => {
-    render(<Slider record="1223445677" recordId={1} />, container);
+    render(<Slider title="1223445677" recordId={1} />, container);
   });
 });
 
@@ -94,7 +94,7 @@ it('renders with with the correct timestamp for a given the record', () => {
 
 it('should render the expected output', () => {
   act(() => {
-    render(<Slider record="1223445677" recordId={1} />, container);
+    render(<Slider title="1223445677" recordId={1} />, container);
   });
 
   expect(

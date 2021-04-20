@@ -1,5 +1,5 @@
 export default {
-  baseUrl: 'http://127.0.0.1:9000',
+  baseUrl: 'https://git.heroku.com/nameless-citadel-07223.git',
 
   async get(path, token) {
     const response = await fetch(`${this.baseUrl}${path}`, {

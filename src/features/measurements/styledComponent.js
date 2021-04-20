@@ -1,7 +1,7 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 export default css`
   display: block;
   margin: 0 auto;
-  border-color: blue;
+  border-color: #42b5e8;
 `;
