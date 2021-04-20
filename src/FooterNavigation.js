@@ -1,29 +1,42 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AddMeasurementIcon, ListMeasurementIcon, ProgressIcon, MoreIcon } from './Icons';
 
 import style from './footerNav.module.css';
 
-const FooterNavigation = () => (
-  <nav className={style.nav}>
-    <div className={style.navLinks}>
-      <a href="">
-        <AddMeasurementIcon />
-      </a>
+const FooterNavigation = () => {
 
-      <a href="" className="navActive">
-        <ListMeasurementIcon />
-      </a>
+  const checkActiveLink = path => (match, location) => {
+    return location.pathname === path;
+  }
 
-      <a href="">
-        <ProgressIcon />
-      </a>
-
-      <a href="">
-        <MoreIcon />
-      </a>
-    </div>
-  </nav>
-);
+  return (
+    <nav className={style.nav}>
+      <div className={style.navLinks}>
+        <NavLink to="/" 
+          activeClassName="navActive"
+          isActive={checkActiveLink('/')}
+        >
+          <AddMeasurementIcon />
+        </NavLink>
+  
+        <NavLink to="/records"
+         activeClassName="navActive"
+         isActive={checkActiveLink('/records')}
+        >
+          <ListMeasurementIcon />
+        </NavLink>
+  
+        <NavLink to="#">
+          <ProgressIcon />
+        </NavLink>
+  
+        <NavLink to="#">
+          <MoreIcon />
+        </NavLink>
+      </div>
+    </nav>
+  );
+}
 
 export default FooterNavigation;
