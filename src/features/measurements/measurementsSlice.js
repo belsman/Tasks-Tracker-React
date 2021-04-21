@@ -4,6 +4,7 @@ import client from '../../app/server';
 const initialState = {
   measurements: [],
   status: 'idle',
+  addMeasurementStatus: 'idle',
   error: null,
 };
 
@@ -38,8 +39,14 @@ const measurementsSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     },
+    [addNewMeasurement.pending]: (state, action) => {
+      state.addMeasurementStatus = 'loading';
+      state.measurements.push(action.payload);
+    },
     [addNewMeasurement.fulfilled]: (state, action) => {
       state.measurements.push(action.payload);
+      // add a time ISO created_at before adding to the list
+      state.addMeasurementStatus = 'idle';
     },
     /* eslint-enable no-param-reassign */
   },

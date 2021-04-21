@@ -16,6 +16,7 @@ const MeasurementsList = () => {
 
   const measurements = useSelector(selectAllMeasurements);
   const measurementsStatus = useSelector(state => state.measurements.status);
+  const addMeasurementStatus = useSelector(state => state.measurements.addMeasurementStatus);
   const error = useSelector(state => state.measurements.error);
 
   const tasks = useSelector(state => state.tasks.tasks);
@@ -41,7 +42,7 @@ const MeasurementsList = () => {
       .reduce((total, num) => total + num);
   }
 
-  if (measurementsStatus === 'loading') {
+  if (measurementsStatus === 'loading' || addMeasurementStatus === 'loading') {
     content = (
       <div className="loader">
         <ClipLoader color="#0000ff" css={override} size={150} />
@@ -49,7 +50,8 @@ const MeasurementsList = () => {
     );
   } else if (measurementsStatus === 'succeeded') {
     const dateOrderedMeasurements = measurements.slice()
-      .sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)));
+      .sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)))
+      .filter(item => item !== null);
     if (measurements.length > 0) {
       content = dateOrderedMeasurements.map(
         measured => (
