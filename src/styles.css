@@ -37,3 +37,9 @@ body {
   color: tomato;
   font-size: 1.2rem;
 }
+
+.notFound {
+  text-align: center;
+  color: #444;
+  font-size: 1.3rem;
+}

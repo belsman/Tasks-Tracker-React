@@ -24,7 +24,7 @@ const Slider = ({ title, recordId }) => {
     history.push(`/records/${measurements[recordIndex].id}`);
   };
 
-  const hasNext = recordIndex + 1 < measurements.length - 1;
+  const hasNext = recordIndex + 1 <= measurements.length - 1;
   const hasPrev = recordIndex - 1 >= 0;
 
   return (

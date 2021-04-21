@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ClipLoader from 'react-spinners/ClipLoader';
 import PropTypes from 'prop-types';
 
 import { fetchMeasurements, selectMeasurementsById } from './measurementsSlice';
 import { fetchTasks } from '../task/tasksSlice';
 import MeasurementCard from './MeasurementCard';
 import FooterNavigation from '../../components/FooterNavigation';
+import override from './styledComponent';
 
 const SingleMeasurementPage = ({ match }) => {
   const { recordId } = match.params;
@@ -41,10 +43,14 @@ const SingleMeasurementPage = ({ match }) => {
   let content;
 
   if (measurementsStatus === 'loading') {
-    content = <div className="loader">Loading...</div>;
+    content = (
+      <div className="loader">
+        <ClipLoader color="#0000ff" css={override} size={150} />
+      </div>
+    );
   } else if (measurementsStatus === 'succeeded') {
     if (!record) {
-      content = <div><h4>No Record Found!</h4></div>;
+      content = <div className="notFound"><h4>No Record Found!</h4></div>;
     } else {
       content = (
         <MeasurementCard
@@ -54,7 +60,7 @@ const SingleMeasurementPage = ({ match }) => {
       );
     }
   } else if (measurementsStatus === 'failure') {
-    content = <div>{measurementEerror}</div>;
+    content = <div className="error">{measurementEerror}</div>;
   }
 
   return (

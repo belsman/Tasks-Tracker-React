@@ -44,11 +44,7 @@ const measurementsSlice = createSlice({
       state.measurements.push(action.payload);
     },
     [addNewMeasurement.fulfilled]: (state, action) => {
-      const date = new Date();
-      action.payload.id = date.valueOf();
-      action.payload.created_at = date.toISOString();
       state.measurements.push(action.payload);
-      state.addMeasurementStatus = 'idle';
     },
     /* eslint-enable no-param-reassign */
   },
