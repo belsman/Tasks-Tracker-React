@@ -4,6 +4,7 @@ import axios from 'axios';
 const initialState = {
   authToken: null,
   status: 'idle',
+  error: null,
 };
 
 export const registerUserAsync = createAsyncThunk(
@@ -54,12 +55,20 @@ export const authSlice = createSlice({
         state.status = 'idle';
         state.authToken = action.payload;
       })
+      .addCase(registerUserAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
       .addCase(loginUserAsync.pending, state => {
         state.status = 'loading';
       })
       .addCase(loginUserAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.authToken = action.payload;
+      })
+      .addCase(loginUserAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
   }, /* eslint-enable no-param-reassign */
 });

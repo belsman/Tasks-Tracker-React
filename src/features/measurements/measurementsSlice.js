@@ -44,8 +44,10 @@ const measurementsSlice = createSlice({
       state.measurements.push(action.payload);
     },
     [addNewMeasurement.fulfilled]: (state, action) => {
+      const date = new Date();
+      action.payload.id = date.valueOf();
+      action.payload.created_at = date.toISOString();
       state.measurements.push(action.payload);
-      // add a time ISO created_at before adding to the list
       state.addMeasurementStatus = 'idle';
     },
     /* eslint-enable no-param-reassign */
@@ -56,5 +58,6 @@ export default measurementsSlice.reducer;
 
 export const selectAllMeasurements = state => state.measurements.measurements;
 
-export const selectMeasurementsById = (state, measurementId) => (state.measurements.measurements
-  .find(measured => String(measured.id) === measurementId));
+export const selectMeasurementsById = (state, measurementId) => (
+  state.measurements.measurements.find(measured => String(measured.id) === measurementId)
+);
