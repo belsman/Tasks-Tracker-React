@@ -1,5 +1,5 @@
 export default {
-  baseUrl: 'https://git.heroku.com/nameless-citadel-07223.git',
+  baseUrl: 'https://enigmatic-escarpment-42132.herokuapp.com',
 
   async get(path, token) {
     const response = await fetch(`${this.baseUrl}${path}`, {

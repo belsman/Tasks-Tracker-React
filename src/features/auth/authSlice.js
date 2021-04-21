@@ -11,7 +11,7 @@ export const registerUserAsync = createAsyncThunk(
   async signupData => {
     const response = await axios({
       method: 'post',
-      url: 'https://git.heroku.com/nameless-citadel-07223.git/signup',
+      url: 'https://enigmatic-escarpment-42132.herokuapp.com/signup',
       data: signupData,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -25,7 +25,7 @@ export const loginUserAsync = createAsyncThunk(
   async loginData => {
     const response = await axios({
       method: 'post',
-      url: 'https://git.heroku.com/nameless-citadel-07223.git/auth/login',
+      url: 'https://enigmatic-escarpment-42132.herokuapp.com/auth/login',
       data: loginData,
       headers: { 'Content-Type': 'application/json' },
     });
