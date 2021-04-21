@@ -10,7 +10,8 @@ import style from './singleRecord.module.css';
 
 const Slider = ({ title, recordId }) => {
   const history = useHistory();
-  const measurements = useSelector(selectAllMeasurements);
+  const measurements = useSelector(selectAllMeasurements)
+    .filter(measured => measured !== null);
 
   let recordIndex = measurements.findIndex(record => record.id === recordId);
 

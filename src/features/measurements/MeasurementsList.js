@@ -16,7 +16,6 @@ const MeasurementsList = () => {
 
   const measurements = useSelector(selectAllMeasurements);
   const measurementsStatus = useSelector(state => state.measurements.status);
-  const addMeasurementStatus = useSelector(state => state.measurements.addMeasurementStatus);
   const error = useSelector(state => state.measurements.error);
 
   const tasks = useSelector(state => state.tasks.tasks);
@@ -42,7 +41,7 @@ const MeasurementsList = () => {
       .reduce((total, num) => total + num);
   }
 
-  if (measurementsStatus === 'loading' || addMeasurementStatus === 'loading') {
+  if (measurementsStatus === 'loading') {
     content = (
       <div className="loader">
         <ClipLoader color="#0000ff" css={override} size={150} />

@@ -10,7 +10,8 @@ describe('auth reducer', () => {
   };
 
   it('should handle initial state', () => {
-    expect(authReducer(undefined, { type: 'unknown' })).toEqual({ authToken: null, status: 'idle' });
+    expect(authReducer(undefined, { type: 'unknown' }))
+      .toEqual({ authToken: null, status: 'idle', error: null });
   });
 
   it('should handle logout', () => {
