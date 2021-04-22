@@ -24,7 +24,7 @@ The application features
 - Redux
 - Font awesome 5
 
-## Run Stockr Locally
+## Run Tasks-Tracker-React Locally
 
 To get a local copy up and running follow these simple steps.
 
