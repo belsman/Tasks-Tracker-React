@@ -1,44 +1,85 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-## Available Scripts
+# Project: Final-Capstone
+## Tasks-Tracker
 
-In the project directory, you can run:
+This is a frontend web application, developed using React and Redux which lets users record the number of hours spent on
+a set of predetermined daily route. It is [connected to a Ruby-on-Rails backend](https://github.com/belsman/Tasks-Tracker-API).
 
-### `yarn start`
+The application features
+- Basic Token Authentication Page
+- Post measurement based on the number of hours spent on a task
+- List records of the number of hours spent on a tasks
+- See details of each individual record
+- Navigate to view other record details
+- Logout
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Live version
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+🔗 [Click here to go live](https://time-task-tracker.herokuapp.com)
 
-### `yarn test`
+## Built With
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Redux
+- Font awesome 5
 
-### `yarn build`
+## Run Stockr Locally
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get a local copy up and running follow these simple steps.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In order to run **Tasks-Tracker-React** locally, you will require the following:
+- Nodejs and yarn
 
-### `yarn eject`
+### Install
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1) Open the Terminal
+2) Run
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+git clone https://github.com/belsman/Tasks-Tracker-React.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+or, for SSH:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+git clone git@github.com:belsman/Tasks-Tracker-React.git
+```
 
-## Learn More
+3) Run ```cd Tasks-Tracker-React``` to enter the main directory
+4) Run ```yarn add```
+5) Run `yarn start` to launch **Tasks-Tracker-React**
+6) Happy viewing!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1) Open the Terminal
+2) Run ```cd Tasks-Tracker-React``` to enter the root directory of the project
+3) Run ```yarn test```
+
+## Author
+
+👤 **Bello Babakolo**
+
+- Github: [@belsman](https://github.com/belsman)
+- Twitter: [@d_belsman](https://twitter.com/d_belsman)
+- Linkdin: [Bello Babakolo](https://www.linkedin.com/in/bello-babakolo-b23b17145/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- [Microverse Inc](https://www.microverse.org/)
+- [Gregoire Vella on Behance](https://www.behance.net/gregoirevella)
+- [This Awesome toturial](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one)
