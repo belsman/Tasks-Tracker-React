@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { RightIcon } from '../../components/Icons';
+import { RightIcon, UpArrowIcon, DownArrowIcon } from '../../components/Icons';
 import MeasurementSummary from './MeasurementSummary';
 
 /* eslint-enable no-unused-vars */
@@ -41,6 +41,16 @@ jest.mock('react-circular-progressbar', () => ({
 
 jest.mock('../../components/Icons', () => ({
   RightIcon() {
+    return (
+      <div>An Icon</div>
+    );
+  },
+  UpArrowIcon() {
+    return (
+      <div>An Icon</div>
+    );
+  },
+  DownArrowIcon() {
     return (
       <div>An Icon</div>
     );

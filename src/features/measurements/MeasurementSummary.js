@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-import { RightIcon } from '../../components/Icons';
+import { RightIcon, UpArrowIcon, DownArrowIcon } from '../../components/Icons';
 import style from './measurementsStyle.module.css';
 
 const MeasurementSummary = ({ record, expectedTotal }) => {
@@ -15,7 +15,7 @@ const MeasurementSummary = ({ record, expectedTotal }) => {
   const recordTotal = [movie, project, running, reading, coding]
     .reduce((total, num) => total + num);
 
-  const percentage = parseInt(((expectedTotal - recordTotal) / expectedTotal) * 100, 10);
+  const percentage = parseInt((recordTotal / expectedTotal) * 100, 10);
 
   const color = percentage < 50 ? 'tomato' : '#5cb85c';
 
@@ -45,9 +45,14 @@ const MeasurementSummary = ({ record, expectedTotal }) => {
       </div>
       <span className={style.recordSummary3}>
         <span>
-          <span className={style.timeGain}>
-            {expectedTotal - recordTotal}
-            {' '}
+          <span>
+            <span className={style.timeGain}>
+              {Math.abs(expectedTotal - recordTotal)}
+              {' '}
+            </span>
+            <span className={style.arrow}>
+              {recordTotal - expectedTotal < 0 ? <DownArrowIcon /> : <UpArrowIcon />}
+            </span>
           </span>
           <span className={style.unit}>Hours</span>
         </span>

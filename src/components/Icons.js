@@ -2,7 +2,8 @@ import React from 'react';
 import {
   faHourglass, faPlus, faChartLine, faChartPie, faEllipsisH,
   faAngleRight, faAngleLeft, faTerminal, faRunning,
-  faBookOpen, faTools, faFilm, faSignOutAlt,
+  faBookOpen, faTools, faFilm, faSignOutAlt, faLongArrowAltUp,
+  faLongArrowAltDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -76,5 +77,17 @@ export const MovieIcon = () => (
 export const ProjectIcon = () => (
   <span>
     <FontAwesomeIcon icon={faTools} size="lg" />
+  </span>
+);
+
+export const UpArrowIcon = () => (
+  <span>
+    <FontAwesomeIcon icon={faLongArrowAltUp} size="md" color="#5cb85c" />
+  </span>
+);
+
+export const DownArrowIcon = () => (
+  <span>
+    <FontAwesomeIcon icon={faLongArrowAltDown} size="md" color="tomato" />
   </span>
 );
