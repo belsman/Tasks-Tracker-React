@@ -15,13 +15,19 @@ const WizardForm = ({
     return nextForm();
   };
 
+  const increment = () => setDuration(duration + 1);
+
+  const decrement = () => (duration - 1 < 0 ? duration : setDuration(duration - 1));
+
   return (
     <div>
       <FooterNavigation />
       <Title />
       <header className={style.recordLabel}>{name}</header>
       <div className={style.recordForm}>
-        <input type="number" name={name} value={duration} onChange={e => setDuration(e.target.value)} />
+        <button className={style.selectHour} type="button" onClick={decrement} disabled={duration === 0}>-</button>
+        <span className={style.displayDuration}>{duration}</span>
+        <button className={style.selectHour} type="button" onClick={increment}>+</button>
       </div>
       <div className={style.wizardSliders}>
         <button className={style.prevBtn} type="button" onClick={() => prevForm()}>Prev</button>
