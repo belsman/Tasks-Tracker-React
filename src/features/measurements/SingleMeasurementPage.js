@@ -13,15 +13,15 @@ const SingleMeasurementPage = ({ match }) => {
   const { recordId } = match.params;
   const dispatch = useDispatch();
 
-  const record = useSelector(state => selectMeasurementsById(state, recordId));
+  const record = useSelector((state) => selectMeasurementsById(state, recordId));
 
-  const measurementsStatus = useSelector(state => state.measurements.status);
-  const measurementEerror = useSelector(state => state.measurements.error);
+  const measurementsStatus = useSelector((state) => state.measurements.status);
+  const measurementEerror = useSelector((state) => state.measurements.error);
 
-  const tasks = useSelector(state => state.tasks.tasks);
-  const taskStatus = useSelector(state => state.tasks.status);
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const taskStatus = useSelector((state) => state.tasks.status);
 
-  const token = useSelector(state => state.auth.authToken);
+  const token = useSelector((state) => state.auth.authToken);
 
   let totalDailyTarget;
 
@@ -36,7 +36,7 @@ const SingleMeasurementPage = ({ match }) => {
   }, [dispatch, taskStatus, measurementsStatus]);
 
   if (taskStatus === 'succeeded') {
-    totalDailyTarget = tasks.map(task => task.daily_target)
+    totalDailyTarget = tasks.map((task) => task.daily_target)
       .reduce((total, num) => total + num);
   }
 

@@ -9,13 +9,13 @@ import override from '../measurements/styledComponent';
 
 const Login = () => {
   const [toggle, setToggle] = useState(true);
-  const status = useSelector(state => state.auth.status);
-  const error = useSelector(state => state.auth.error);
+  const status = useSelector((state) => state.auth.status);
+  const error = useSelector((state) => state.auth.error);
 
-  const toggleHandler = value => e => {
+  const toggleHandler = (value) => (e) => {
     setToggle(value);
     document.querySelectorAll(`.${style.tabButtons}`)
-      .forEach(btn => btn.classList.remove(`${style.active}`));
+      .forEach((btn) => btn.classList.remove(`${style.active}`));
     e.target.classList.add(`${style.active}`);
   };
 

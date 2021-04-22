@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     const bodyFormData = new FormData();
     bodyFormData.append('username', username);
@@ -25,7 +25,7 @@ const LoginForm = () => {
           type="text"
           id="username"
           value={username}
-          onChange={e => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="username"
         />
       </label>
@@ -36,7 +36,7 @@ const LoginForm = () => {
           type="password"
           id="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="password"
         />
       </label>

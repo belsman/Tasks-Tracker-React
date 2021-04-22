@@ -9,7 +9,7 @@ const initialState = {
 
 export const registerUserAsync = createAsyncThunk(
   'auth/registerUser',
-  async signupData => {
+  async (signupData) => {
     const response = await axios({
       method: 'post',
       url: 'https://enigmatic-escarpment-42132.herokuapp.com/signup',
@@ -23,7 +23,7 @@ export const registerUserAsync = createAsyncThunk(
 
 export const loginUserAsync = createAsyncThunk(
   'auth/loginUser',
-  async loginData => {
+  async (loginData) => {
     const response = await axios({
       method: 'post',
       url: 'https://enigmatic-escarpment-42132.herokuapp.com/auth/login',
@@ -40,15 +40,15 @@ export const authSlice = createSlice({
   initialState,
   /* eslint-disable no-param-reassign */
   reducers: {
-    logout: state => {
+    logout: (state) => {
       state.authToken = null;
       state.status = 'idle';
     },
   },
 
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(registerUserAsync.pending, state => {
+      .addCase(registerUserAsync.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(registerUserAsync.fulfilled, (state, action) => {
@@ -59,7 +59,7 @@ export const authSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(loginUserAsync.pending, state => {
+      .addCase(loginUserAsync.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(loginUserAsync.fulfilled, (state, action) => {
@@ -75,6 +75,6 @@ export const authSlice = createSlice({
 
 export const { logout } = authSlice.actions;
 
-export const isUserLogged = state => Boolean(state.auth.authToken);
+export const isUserLogged = (state) => Boolean(state.auth.authToken);
 
 export default authSlice.reducer;

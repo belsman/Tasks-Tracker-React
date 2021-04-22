@@ -8,14 +8,14 @@ const initialState = {
   error: null,
 };
 
-export const fetchMeasurements = createAsyncThunk('measurements/fetchMeasurement', async options => {
+export const fetchMeasurements = createAsyncThunk('measurements/fetchMeasurement', async (options) => {
   const { token } = options;
   const response = await client.get('/measurements', token);
   const data = await response.json();
   return data;
 });
 
-export const addNewMeasurement = createAsyncThunk('measurements/addNewMeasurement', async options => {
+export const addNewMeasurement = createAsyncThunk('measurements/addNewMeasurement', async (options) => {
   const { token, formData } = options;
   const response = await client.post('/measurements', token, formData);
   const data = await response.json();
@@ -28,7 +28,7 @@ const measurementsSlice = createSlice({
   reducers: {},
   extraReducers: {
     /* eslint-disable no-param-reassign */
-    [fetchMeasurements.pending]: state => {
+    [fetchMeasurements.pending]: (state) => {
       state.status = 'loading';
     },
     [fetchMeasurements.fulfilled]: (state, action) => {
@@ -53,9 +53,9 @@ const measurementsSlice = createSlice({
 
 export default measurementsSlice.reducer;
 
-export const selectAllMeasurements = state => state.measurements.measurements;
+export const selectAllMeasurements = (state) => state.measurements.measurements;
 
 export const selectMeasurementsById = (state, measurementId) => (
-  state.measurements.measurements.filter(measured => measured !== null)
-    .find(measured => String(measured.id) === measurementId)
+  state.measurements.measurements.filter((measured) => measured !== null)
+    .find((measured) => String(measured.id) === measurementId)
 );

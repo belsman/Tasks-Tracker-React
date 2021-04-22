@@ -15,9 +15,9 @@ const Finished = ({ handlePreviousForm, formData }) => {
   const [addRequestStatus, setAddRequestStatus] = useState('idle');
   const dispatch = useDispatch();
   const history = useHistory();
-  const token = useSelector(state => state.auth.authToken);
+  const token = useSelector((state) => state.auth.authToken);
 
-  const addMeasurementStatus = useSelector(state => state.measurements.addMeasurementStatus);
+  const addMeasurementStatus = useSelector((state) => state.measurements.addMeasurementStatus);
 
   const canSave = Object.values(formData).some(Boolean) && addRequestStatus === 'idle';
 

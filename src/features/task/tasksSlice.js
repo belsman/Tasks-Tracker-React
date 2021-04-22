@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async options => {
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (options) => {
   const { token } = options;
   const response = await client.get('/tasks', token);
   const data = await response.json();
@@ -20,7 +20,7 @@ const tasksSlice = createSlice({
   reducers: {},
   extraReducers: {
     /* eslint-disable no-param-reassign */
-    [fetchTasks.pending]: state => {
+    [fetchTasks.pending]: (state) => {
       state.status = 'loading';
     },
     [fetchTasks.fulfilled]: (state, action) => {

@@ -15,13 +15,13 @@ const MeasurementsList = () => {
   const dispatch = useDispatch();
 
   const measurements = useSelector(selectAllMeasurements);
-  const measurementsStatus = useSelector(state => state.measurements.status);
-  const error = useSelector(state => state.measurements.error);
+  const measurementsStatus = useSelector((state) => state.measurements.status);
+  const error = useSelector((state) => state.measurements.error);
 
-  const tasks = useSelector(state => state.tasks.tasks);
-  const taskStatus = useSelector(state => state.tasks.status);
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const taskStatus = useSelector((state) => state.tasks.status);
 
-  const token = useSelector(state => state.auth.authToken);
+  const token = useSelector((state) => state.auth.authToken);
 
   useEffect(() => {
     if (measurementsStatus === 'idle') {
@@ -37,7 +37,7 @@ const MeasurementsList = () => {
   let expectedTotalTime;
 
   if (taskStatus === 'succeeded') {
-    expectedTotalTime = tasks.map(task => task.daily_target)
+    expectedTotalTime = tasks.map((task) => task.daily_target)
       .reduce((total, num) => total + num);
   }
 
@@ -50,10 +50,10 @@ const MeasurementsList = () => {
   } else if (measurementsStatus === 'succeeded') {
     const dateOrderedMeasurements = measurements.slice()
       .sort((m1, m2) => (new Date(m2.created_at) - new Date(m1.created_at)))
-      .filter(item => item !== null);
+      .filter((item) => item !== null);
     if (measurements.length > 0) {
       content = dateOrderedMeasurements.map(
-        measured => (
+        (measured) => (
           <MeasurementSummary
             key={measured.id}
             record={measured}

@@ -9,7 +9,7 @@ const RegistrationForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     const bodyFormData = new FormData();
     bodyFormData.append('username', username);
@@ -28,7 +28,7 @@ const RegistrationForm = () => {
           id="username"
           name="username"
           value={username}
-          onChange={e => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="username"
           required
         />
@@ -42,7 +42,7 @@ const RegistrationForm = () => {
           id="email"
           name="email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="email"
           required
         />
@@ -56,7 +56,7 @@ const RegistrationForm = () => {
           id="password"
           name="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="password"
           required
         />

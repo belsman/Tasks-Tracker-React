@@ -9,7 +9,7 @@ import { logout } from '../features/auth/authSlice';
 import style from './footerNav.module.css';
 
 const FooterNavigation = () => {
-  const checkActiveLink = path => (match, location) => location.pathname === path;
+  const checkActiveLink = (path) => (match, location) => location.pathname === path;
   const dispatch = useDispatch();
 
   return (
