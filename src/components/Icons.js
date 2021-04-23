@@ -40,13 +40,13 @@ export const LogOutIcon = () => (
 
 export const RightIcon = () => (
   <span>
-    <FontAwesomeIcon icon={faAngleRight} size="md" />
+    <FontAwesomeIcon icon={faAngleRight} size="1x" />
   </span>
 );
 
 export const LeftIcon = () => (
   <span>
-    <FontAwesomeIcon icon={faAngleLeft} size="md" />
+    <FontAwesomeIcon icon={faAngleLeft} size="1x" />
   </span>
 );
 
@@ -82,12 +82,12 @@ export const ProjectIcon = () => (
 
 export const UpArrowIcon = () => (
   <span>
-    <FontAwesomeIcon icon={faLongArrowAltUp} size="md" color="#5cb85c" />
+    <FontAwesomeIcon icon={faLongArrowAltUp} size="1x" color="#5cb85c" />
   </span>
 );
 
 export const DownArrowIcon = () => (
   <span>
-    <FontAwesomeIcon icon={faLongArrowAltDown} size="md" color="tomato" />
+    <FontAwesomeIcon icon={faLongArrowAltDown} size="1x" color="tomato" />
   </span>
 );
