@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the expected output 1`] = `
+"<section>
+  <article class=\\"record\\">&lt;Slider /&gt;<div class=\\"progressPane\\">
+      <div class=\\"progressBarContainer\\">
+        <div>A Dummy progressbar</div>
+        <div class=\\"description\\">Total Time spent</div>
+      </div>
+      <div class=\\"progressBarContainer\\">
+        <div>A Dummy progressbar</div>
+        <div class=\\"description\\">Daily Targets</div>
+      </div>
+      <div class=\\"progressBarContainer\\">
+        <div>A Dummy progressbar</div>
+        <div class=\\"description\\">Progress</div>
+      </div>
+    </div>
+    <ul class=\\"tasksData\\">
+      <li class=\\"taskItem\\">&lt;Icon /&gt;<span><span class=\\"title\\">Project</span><span class=\\"value\\">3<span class=\\"unit\\">h</span></span></span></li>
+      <li class=\\"taskItem\\">&lt;Icon /&gt;<span><span class=\\"title\\">Coding</span><span class=\\"value\\">4<span class=\\"unit\\">h</span></span></span></li>
+      <li class=\\"taskItem\\">&lt;Icon /&gt;<span><span class=\\"title\\">Reading</span><span class=\\"value\\">2<span class=\\"unit\\">h</span></span></span></li>
+      <li class=\\"taskItem\\">&lt;Icon /&gt;<span><span class=\\"title\\">Running</span><span class=\\"value\\">1<span class=\\"unit\\">h</span></span></span></li>
+      <li class=\\"taskItem\\">&lt;Icon /&gt;<span><span class=\\"title\\">Movie</span><span class=\\"value\\">5<span class=\\"unit\\">h</span></span></span></li>
+    </ul>
+  </article>
+</section>"
+`;

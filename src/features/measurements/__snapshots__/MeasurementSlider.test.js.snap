@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the expected output 1`] = `
+"<div class=\\"slider\\"><button type=\\"button\\" disabled=\\"\\">
+    <div>An Icon</div>
+  </button><span>March 13th, 1962</span><button type=\\"button\\">
+    <div>An Icon</div>
+  </button></div>"
+`;

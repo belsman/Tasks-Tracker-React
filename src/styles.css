@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e8e8e8;
+  margin-bottom: 43px;
+}
+
+.h2 {
+  font-size: large;
+  font-weight: 700;
+}
+
+.navActive {
+  background-color: #42b5e8;
+}
+
+.header {
+  background-color: #42b5e8;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error {
+  text-align: center;
+  color: tomato;
+  font-size: 1.2rem;
+}
+
+.notFound {
+  text-align: center;
+  color: #444;
+  font-size: 1.3rem;
+}
